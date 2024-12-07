@@ -1,0 +1,10 @@
+body,img,a {
+  margin: 0;
+  border: 0;
+}
+.content_area{
+  display: inline-block;
+}
+.content_area > {
+  border: 2px solid black;
+}

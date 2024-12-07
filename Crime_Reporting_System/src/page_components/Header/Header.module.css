@@ -1,0 +1,46 @@
+.header{
+    max-width: 100%;
+    height: auto;
+
+    border-top: 0%;
+    border-bottom: 5px solid red;
+    background-color: rgb(221, 231, 231);
+
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr 1fr;
+    align-items: center;
+}
+.header .banner_image_logo{
+    justify-self: center;
+    width: 60%;
+    height: auto;
+    border-radius: 50%;
+}
+/* .header .banner_image_trailing_dove {
+    width: 17vw;
+    height: auto;
+    opacity: 45%;
+    justify-self :center;
+    position: absolute;
+    left: 50%;
+    overflow: hidden;
+} */
+.header .banner_title{
+    justify-self :center;
+    font-family: cursive;
+    position: relative;
+    left: 15%;
+    font-size: 3vw;
+}
+.header .banner_image_notification{
+    justify-self: right;
+    width: 30%;
+    position: relative;
+    left: 30%;
+}
+.header .banner_image_user{
+    justify-self: right;
+    width: 40%;
+    position: relative;
+    right: 10%; 
+}
