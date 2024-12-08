@@ -2,6 +2,9 @@ body,img,a {
   margin: 0;
   border: 0;
 }
+:root{
+  background-color: rgba(200, 200, 200, 0.01);  ;
+}
 .content_area{
   display: inline-block;
 }

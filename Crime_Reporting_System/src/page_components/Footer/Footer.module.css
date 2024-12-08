@@ -45,13 +45,16 @@
 
 .footer .contact_1 > a > img{
     width: 15%;
-    margin-bottom: -15px;
+    margin-bottom: -25px;
 }
 .footer .contact_2> a > img {
     width: 15%;
-    margin-bottom: -15px;
+    margin-bottom: -25px;
 }
 .footer .contact_3> a > img {
     width: 10%;
-    margin-bottom: -15px;
+    margin-bottom: -25px;
+}
+.footer img:hover{
+    transform: scale(1.1);
 }

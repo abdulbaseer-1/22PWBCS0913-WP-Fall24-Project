@@ -1,18 +1,18 @@
 import sidebar_style from "./Sidebar.module.css";
 function Admin_Sidebar() {
     return(
-        <ul className={sidebar_style.sidebar}>
-            <li><a href="">Home</a></li>
-            <li><a href="">Contact us</a></li>
-            <li><a href="">Pending cases</a></li>
-            <li><a href="">Closed Cases</a></li>
-            <li><a href="">Ongoing Investigations</a></li>
-            <li><a href="">Local Felonies</a></li>
-            <li><a href="">Loose Suspects</a></li>
-            <li><a href="">Teams</a></li>
-            <li><a href="">Audit Logs</a></li>
-            <li><a href="">settings</a></li>
-        </ul>
+        <div className={sidebar_style.sidebar}>
+            <a href="">Home</a>
+            <a href="">Contact us</a>
+            <a href="">Pending cases</a>
+            <a href="">Closed Cases</a>
+            <a href="">Ongoing Investigations</a>
+            <a href="">Local Felonies</a>
+            <a href="">Loose Suspects</a>
+            <a href="">Teams</a>
+            <a href="">Audit Logs</a>
+            <a href="">settings</a>
+        </div>
     );
 }
 
