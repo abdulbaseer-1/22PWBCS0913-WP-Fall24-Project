@@ -1,28 +1,56 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import hero1 from "../../assets/Hero/hero1.jpg";
 import hero2 from "../../assets/Hero/hero2.jpg";
 
 import hero_style from "./Hero.module.css";
 
-function Hero() {
+function Hero({className}) {
     const heroImages = [hero1, hero2];
 
     const [hero, setHero] = useState(0);
 
+    let interval = useRef(null);
+
+    const startInterval = () => {
+        interval.current = setInterval(() => {
+            setHero((prevState) => (prevState + 1) % heroImages.length);
+        },5000);
+    };
+    const resetInterval = () => { //this structure mimics the component does unmount from react class components, refer to react class life cycle methods.
+        if (interval.current) {
+            clearInterval(interval.current);
+            interval.current = null;
+        }
+    };
     useEffect(() => { // this is for vhanging image // b/c useEffect act on every update
         //const intervalId = setInterval(function, delay); // syntax for setInterval
-        const interval = setInterval(() => { // setInterval and clearInterval is inbuilt function
-            setHero((prevState) => (prevState + 1) % heroImages.length); // how does this prevState here work? how does the compiler know what im talking about?
-        }, 5000);
-
-        return () => clearInterval(interval); // Cleanup function / refer back to slides / clears intrvalId back to 0
+        startInterval();
+        return () => resetInterval();
     }, [heroImages.length]); // dependencies
 
+    const next_hero = ()=> {
+        resetInterval();
+        setHero((prevState) => (prevState + 1) % heroImages.length);
+        startInterval();
+    };
+    const prev_hero = () => {
+        resetInterval();
+        setHero((prevState) => {
+            if (prevState === 0) {
+                return heroImages.length - 1; 
+            } else {
+                return (prevState - 1) % heroImages.length;
+            }
+        });
+
+        startInterval();
+    };
+
     return (
-        <div className={hero_style.hero}>
-            <span>&#60;</span>
+        <div className={`${hero_style.hero} ${className}`} onClick={next_hero}>
+            <button className={hero_style.prev_btn}>&#60;</button>
             <img src={heroImages[hero]} alt="Hero" />
-            <span>&#62;</span>   
+            <button className={hero_style.next_btn}>&#62;</button>   
         </div>
     );
 }

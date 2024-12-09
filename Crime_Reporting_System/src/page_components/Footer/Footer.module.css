@@ -1,11 +1,11 @@
 .footer {
-    border-top: 30px solid black; 
+    border-top: 20px solid black; 
     width: 100%;
     height: auto;
     margin: 0 auto;
     text-align: center;
     background-color: darkgray;
-
+    margin-top: 5px;
 }
 .footer .to_center{
     align-content: center;

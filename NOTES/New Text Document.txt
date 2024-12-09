@@ -1,0 +1,11 @@
+-----------------------------------------------------------------------------
+.sidebar > a:hover{ /*NOTE!!!!! : if you dont use .sidebar to specify the parent, all a in your doc are effected*/
+    transform:scale3d(1,1.1,1) /*i think horizontal,pop, vertical*/
+}
+
+
+-----------------------------------------------------------------------------
+
+Important note
+1. refer to app.js for statement.
+2. refer to sidebar module -> return function for solution to problem.

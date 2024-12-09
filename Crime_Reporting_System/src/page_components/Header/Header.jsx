@@ -4,10 +4,10 @@ import notification_active_logo from "../../assets/icons/notification_active.png
 import phoenix_logo from "../../assets/banner/phoenix_logo.png";
 import user_icon from "../../assets/icons/login.png";
 // import trailing_dove from "../../assets/banner/trailing_dove-removebg-preview.png";
-function Header() {
+function Header({className}) {
     let notification_count = 0; // to take from a backend function which checks notification count
     return(
-        <div className={header_style.header}>
+        <div className={`${header_style.header} ${className}`}>
             <img src={phoenix_logo} alt="logo image" className={header_style.banner_image_logo}/>
             <h2 className={header_style.banner_title}>Crime Report</h2>
             {/* <img src={trailing_dove} alt="trailing dove" className={header_style.banner_image_trailing_dove}/> */}
