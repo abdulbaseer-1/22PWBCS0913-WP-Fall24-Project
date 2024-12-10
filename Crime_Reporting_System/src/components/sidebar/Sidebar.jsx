@@ -2,16 +2,15 @@ import sidebar_style from "./Sidebar.module.css";
 function Admin_Sidebar({className}) {
     return(
         <div className={`${sidebar_style.sidebar} ${className}`}> {/*using this syntax will allow us to use external css on this later*/}
-            <a href="">Home</a>
-            <a href="">Contact us</a>
-            <a href="">Pending cases</a>
-            <a href="">Closed Cases</a>
-            <a href="">Ongoing Investigations</a>
-            <a href="">Local Felonies</a>
-            <a href="">Loose Suspects</a>
-            <a href="">Teams</a>
-            <a href="">Audit Logs</a>
-            <a href="">settings</a>
+            <a href="/Home">Home</a> {/* Use the path-names you've set in your app.js because they will link you to page"" . there are no actual html pages so no relative paths. */}
+            <a href="/Contact_Us">Contact us</a>
+            <a href="/Pending_Cases">Pending cases</a>
+            <a href="/Closed_Cases">Closed Cases</a>
+            <a href="/Ongoing_Investigations">Ongoing Investigations</a>
+            <a href="/Local_Felonies">Local Felonies</a>
+            <a href="/Report_a_Crime">Report Crime</a>
+            <a href="/Teams">Teams</a>
+            <a href="/Settings">settings</a>
         </div>
     );
 }

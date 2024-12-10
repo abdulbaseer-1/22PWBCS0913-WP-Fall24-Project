@@ -9,3 +9,12 @@
 Important note
 1. refer to app.js for statement.
 2. refer to sidebar module -> return function for solution to problem.
+
+-----------------------------------------------------------------------------
+
+NYew note in sidebar.js
+
+
+-----------------------------------------------------------------------------
+
+Note at end of App.js, explainig what iv'e done, detail later.
