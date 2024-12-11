@@ -4,6 +4,7 @@ import Footer from "../../components/Footer/Footer";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Hero from "../../components/Hero/Hero";
 import ContentBody from "../../components/content_body/ContentBody";
+import Report_Form from "../../components/report_form/Report_Form";
 
 function Report_a_Crime() {
   return(
@@ -12,7 +13,7 @@ function Report_a_Crime() {
       <Hero/>
       <div className={report_crime_style.content_area}>
         <Sidebar className={report_crime_style.sidebar}/>
-        <ContentBody className={report_crime_style.contentBody}></ContentBody> {/*i think the reason why this is not being affected by external css is that this is an abstract element which has been defined in a separate file , thus to make changes , we should make changes there */}
+        <ContentBody className={report_crime_style.contentBody}><Report_Form/></ContentBody> {/*i think the reason why this is not being affected by external css is that this is an abstract element which has been defined in a separate file , thus to make changes , we should make changes there */}
       </div>
       <Footer/>
     </>
