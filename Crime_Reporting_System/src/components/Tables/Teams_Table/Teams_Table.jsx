@@ -1,50 +1,58 @@
 import React, { useState } from 'react'; // Import React and the useState hook from React to handle state
-import table_style from "./Table.module.css";
+import table_style from "./Teams_Table.module.css";
+import dustbin from "../../../assets/tables/trash icon.png";
+import detailEye from "../../../assets/tables/eye icon.png";
 
-const Table = ({className}) => {
-  console.log("Table component loaded");
-  // Define table columns in an array. These are the headers that will appear at the top of the table.
-  const columns = ['ID', 'Title', 'Description', 'Date'];
+const Teams_Table = ({className}) => {
+   // Define table columns in an array. These are the headers that will appear at the top of the table.
+   const columns = ['Team_no.', 'Team_Lead', 'Area', 'Members', 'Actions'];
 
-  // Define the initial state for the data in the table. Use the useState hook to manage it.
-  const [data, setData] = useState([
-    { id: 1, title: 'Crime 1', description: 'Description 1', date: '2024-12-09' },
-    { id: 2, title: 'Crime 2', description: 'Description 2', date: '2024-12-08' },
-    { id: 3 , title: 'Crime 3', description: 'Description 3', date: '2024-12-07' },
-    { id: 4, title: 'Crime 4', description: 'Description 4', date: '2024-12-06' },
-  ]);
+   // Define the initial state for the data in the table. Use the useState hook to manage it.
+   const [data, setData] = useState([
+     { Team_no: 1032, Team_Lead: 'paul 1', Area: 'Description 1', Members: '22', Actions: {detailEye ,dustbin}},
+     { Team_no: 2647, Team_Lead: 'james 2', Area: 'Description 2', Members: '20', Actions: {detailEye ,dustbin}},
+     { Team_no: 3939, Team_Lead: 'crimson 3', Area: 'Description 3', Members: '24', Actions: {detailEye ,dustbin}},
+     { Team_no: 4734, Team_Lead: 'kale 4', Area: 'Description 4', Members: '13', Actions: {detailEye, dustbin}},
+   ]);
+ 
+   //details href to be generated from user clicked at backend.
+   const link = "/Teams";
+ 
+   // JSX structure for rendering the table and its contents
+   return (
+     <div className={`${table_style.table_container} ${className}`}>{/* Container to hold the table*/}
+       <table className={`${table_style.crime_reports_table} ${className}`}>{/* Table element  */}
+         <thead>{/* The table header contains column names */}
+           <tr>{/* A single row for the header */}
+             {/* Loop through the 'columns' array to create table headers */}
+             {columns.map((column, index) => (
+               <th key={index} className={`${table_style.table_header}  ${className}`}> {/* Each header has a key and class for styling */}
+                 {column} {/* The text displayed in the header is the column name */}
+               </th>
+             ))}
+           </tr>
+         </thead>
+         <tbody>   {/* Table body contains the actual data rows */}
+                   {/* Loop through the 'data' array to create each row of data */}
+           {data.map((row, index) => (
+             <tr key={index}> {/* Each row has a unique key for React's reconciliation */}
+               <td className={`${table_style.table_cell} ${className}`}>{row.Team_no}</td> {/* Display the 'id' of each row in a table cell */}
+               <td className={`${table_style.table_cell} ${className}`}>{row.Team_Lead}</td> {/* Display the 'title' of each row */}
+               <td className={`${table_style.table_cell} ${className}`}>{row.Area}</td> {/* Display the 'description' */}
+               <td className={`${table_style.table_cell} ${className}`}>{row.Members}</td> {/* Display the 'date' of the crime */}
+               <td className={`${table_style.table_cell_centered} ${className}`}>
+                 <a href={link}><img src={row.Actions.detailEye} alt="details Icon" ></img></a>
+                 <a href={link}><img src={row.Actions.dustbin} alt="dustbin Icon" ></img></a>
+               </td> {/*image inside row dtails so do accordingly, look this up in detail */}
+             </tr>
+           ))}
+         </tbody>
+       </table>
+     </div>
+   );
+ };
 
-  // JSX structure for rendering the table and its contents
-  return (
-    <div className={`${table_style.table_container} ${className}`}>{/* Container to hold the table*/}
-      <table className={`${table_style.crime_reports_table} ${className}`}>{/* Table element  */}
-        <thead>{/* The table header contains column names */}
-          <tr>{/* A single row for the header */}
-            {/* Loop through the 'columns' array to create table headers */}
-            {columns.map((column, index) => (
-              <th key={index} className={`${table_style.table_header}  ${className}`}> {/* Each header has a key and class for styling */}
-                {column} {/* The text displayed in the header is the column name */}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>   {/* Table body contains the actual data rows */}
-                  {/* Loop through the 'data' array to create each row of data */}
-          {data.map((row, index) => (
-            <tr key={index}> {/* Each row has a unique key for React's reconciliation */}
-              <td className={`${table_style.table_cell} ${className}`}>{row.id}</td> {/* Display the 'id' of each row in a table cell */}
-              <td className={`${table_style.table_cell} ${className}`}>{row.title}</td> {/* Display the 'title' of each row */}
-              <td className={`${table_style.table_cell} ${className}`}>{row.description}</td> {/* Display the 'description' */}
-              <td className={`${table_style.table_cell} ${className}`}>{row.date}</td> {/* Display the 'date' of the crime */}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-};
-
-export default Table; 
+export default Teams_Table; 
 
 
 

@@ -1,18 +1,23 @@
 import React, { useState } from 'react'; // Import React and the useState hook from React to handle state
-import table_style from "./Table.module.css";
+import table_style from "./Local_Felonies_Table.module.css";
+import detailEye from "../../../assets/tables/eye icon.png";
+import dustbin from "../../../assets/tables/trash icon.png";
 
-const Table = ({className}) => {
+const Local_Felonies_Table = ({className}) => {
   console.log("Table component loaded");
   // Define table columns in an array. These are the headers that will appear at the top of the table.
-  const columns = ['ID', 'Title', 'Description', 'Date'];
+  const columns = ['ID', 'Felony', 'Location', 'Date', 'Actions'];
 
   // Define the initial state for the data in the table. Use the useState hook to manage it.
   const [data, setData] = useState([
-    { id: 1, title: 'Crime 1', description: 'Description 1', date: '2024-12-09' },
-    { id: 2, title: 'Crime 2', description: 'Description 2', date: '2024-12-08' },
-    { id: 3 , title: 'Crime 3', description: 'Description 3', date: '2024-12-07' },
-    { id: 4, title: 'Crime 4', description: 'Description 4', date: '2024-12-06' },
+    { id: 1032, Felony: 'Crime 1', Location: 'location 1', date: '2023-09-09', Actions: {detailEye, dustbin}},
+    { id: 2647, Felony: 'Crime 2', Location: 'location 2', date: '2024-11-08', Actions: {detailEye, dustbin}},
+    { id: 3939, Felony: 'Crime 3', Location: 'location 3', date: '2024-02-07', Actions: {detailEye, dustbin}},
+    { id: 4734, Felony: 'Crime 4', Location: 'location 4', date: '2024-12-06', Actions: {detailEye, dustbin}},
   ]);
+
+  //details href to be generated from user clicked at backend.
+  const link = "/Local_Felonies";
 
   // JSX structure for rendering the table and its contents
   return (
@@ -33,9 +38,13 @@ const Table = ({className}) => {
           {data.map((row, index) => (
             <tr key={index}> {/* Each row has a unique key for React's reconciliation */}
               <td className={`${table_style.table_cell} ${className}`}>{row.id}</td> {/* Display the 'id' of each row in a table cell */}
-              <td className={`${table_style.table_cell} ${className}`}>{row.title}</td> {/* Display the 'title' of each row */}
-              <td className={`${table_style.table_cell} ${className}`}>{row.description}</td> {/* Display the 'description' */}
+              <td className={`${table_style.table_cell} ${className}`}>{row.Felony}</td> {/* Display the 'title' of each row */}
+              <td className={`${table_style.table_cell} ${className}`}>{row.Location}</td> {/* Display the 'description' */}
               <td className={`${table_style.table_cell} ${className}`}>{row.date}</td> {/* Display the 'date' of the crime */}
+              <td className={`${table_style.table_cell_centered} ${className}`}>
+                <a href={link}><img src={row.Actions.detailEye} alt="Details Icon" ></img></a>
+                <a href={link}><img src={row.Actions.dustbin} alt="dustbin Icon" ></img></a>
+              </td> {/*image inside row dtails so do accordingly, look this up in detail */}
             </tr>
           ))}
         </tbody>
@@ -44,7 +53,7 @@ const Table = ({className}) => {
   );
 };
 
-export default Table; 
+export default Local_Felonies_Table; 
 
 
 

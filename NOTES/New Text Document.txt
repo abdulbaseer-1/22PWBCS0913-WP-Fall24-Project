@@ -18,3 +18,11 @@ NYew note in sidebar.js
 -----------------------------------------------------------------------------
 
 Note at end of App.js, explainig what iv'e done, detail later.
+
+------------------------------------------------------------------------------
+
+Note to include child props if to be used later, in container body component
+
+-------------------------------------------------------------------------------
+
+Using same names for css dosent create conflict in modules as modules are given unique names at build time

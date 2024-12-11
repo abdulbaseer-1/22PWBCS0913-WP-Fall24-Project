@@ -16,9 +16,59 @@
 }
 
 .content_area .contentBody {
-  align-self: center;
   width: 100%;
   box-sizing: border-box;
-  overflow-y: fit-to-parent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: whitesmoke;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
-  
+
+.content_area .contact_container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  background-color: beige;
+  padding: 20px;
+  border-radius: 8px;
+}
+.content_area .contact{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: antiquewhite;
+  border-radius: 20px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s; /*really cool trick, notice the shadow moving*/
+}
+.content_area .contact > img{
+  width: 100px;
+  height: auto;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+.content_area .contact > a >img{
+  width: 60px;
+  margin-top: 10px;
+}
+.content_area .contact > h5{
+  min-width: 250px;
+  max-width: 250px;
+}
+.content_area .contact > p{
+  max-width: 250px;
+}
+
+.content_area .description {
+  width: 100%;
+  background-color: rgb(238, 253, 253);
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}

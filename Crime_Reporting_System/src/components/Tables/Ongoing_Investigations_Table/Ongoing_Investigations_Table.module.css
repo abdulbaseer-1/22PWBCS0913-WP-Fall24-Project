@@ -48,6 +48,8 @@
   height: auto;
   border-radius: 9px ;
   background-color: rgba(0, 0, 0, 0.1);
+  margin-left: 3px;
+  margin-right: 3px;
 }
 .table_container .table_cell > a > img:hover,
 .table_container .table_cell_centered > a > img:hover{
