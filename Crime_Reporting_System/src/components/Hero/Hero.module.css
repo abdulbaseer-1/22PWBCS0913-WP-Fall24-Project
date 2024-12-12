@@ -3,13 +3,14 @@
     width: 100%;
     height: auto;
     overflow: hidden;
+    border: 1px solid black;
 }
 .hero > img {
     width: 100%;
     height: auto;
     object-fit: cover;
 }
-@media screen and (min-width:720px) {
+@media screen and (max-width:1080px) {
     .hero{
         height: 70%;
     }

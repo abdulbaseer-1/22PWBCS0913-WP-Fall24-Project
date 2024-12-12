@@ -1,130 +1,69 @@
 import React, { useState, useEffect, useRef } from "react";
-import hero1 from "../../assets/Hero/hero1.jpg";
-import hero2 from "../../assets/Hero/hero2.jpg";
-
+import lady from "../../assets/Hero/lady_pic.jpg";
+import gunshot from "../../assets/Hero/gunshot.jpg";
+import joint_rolling from "../../assets/Hero/rolling_joints.png";
+import heroin from "../../assets/Hero/heroin.png";
+import street_crime from "../../assets/Hero/street_crime.jpg";
+import cybercrime from "../../assets/Hero/cyber_crime.jpg";
 import hero_style from "./Hero.module.css";
 
-function Hero({className}) {
-    const heroImages = [hero1, hero2];
+import Rape_Message from "../Hero_messages/MRape/Rape_Message";
+import Murder_Message from "../Hero_messages/MMurder/Murder_Message";
+import Heroin_Message from "../Hero_messages/MHeroin/Heroin_Message";
+import Drugs_Message from "../Hero_messages/MDrugs/Drugs_Message";
+import Disruption_Message from "../Hero_messages/MDisruption/Distruption_Message";
+import Cyber_Message from "../Hero_messages/MCyber/Cybercrime_Message";
+
+function Hero({ className, children }) {
+    const heroImages = [lady, gunshot, heroin, joint_rolling, street_crime, cybercrime];
+    const heroMessages = [Rape_Message, Murder_Message, Heroin_Message, Drugs_Message, Disruption_Message, Cyber_Message];
 
     const [hero, setHero] = useState(0);
+    const [message, setMessage] = useState(0);
 
     let interval = useRef(null);
 
     const startInterval = () => {
         interval.current = setInterval(() => {
             setHero((prevState) => (prevState + 1) % heroImages.length);
-        },5000);
+            setMessage((prevState) => (prevState + 1) % heroMessages.length);
+        }, 10000);
     };
-    const resetInterval = () => { //this structure mimics the component does unmount from react class components, refer to react class life cycle methods.
+
+    const resetInterval = () => {
         if (interval.current) {
             clearInterval(interval.current);
             interval.current = null;
         }
     };
-    useEffect(() => { // this is for vhanging image // b/c useEffect act on every update
-        //const intervalId = setInterval(function, delay); // syntax for setInterval
+
+    useEffect(() => {
         startInterval();
         return () => resetInterval();
-    }, [heroImages.length]); // dependencies
+    }, [heroImages.length, heroMessages.length]); // Dependencies for when the image or message arrays change
 
-    const next_hero = ()=> {
+    const next_hero = () => {
         resetInterval();
         setHero((prevState) => (prevState + 1) % heroImages.length);
+        setMessage((prevState) => (prevState + 1) % heroMessages.length);
         startInterval();
     };
+
     const prev_hero = () => {
         resetInterval();
-        setHero((prevState) => {
-            if (prevState === 0) {
-                return heroImages.length - 1; 
-            } else {
-                return (prevState - 1) % heroImages.length;
-            }
-        });
-
+        setHero((prevState) => (prevState === 0 ? heroImages.length - 1 : prevState - 1));
+        setMessage((prevState) => (prevState === 0 ? heroMessages.length - 1 : prevState - 1));
         startInterval();
     };
 
     return (
-        <div className={`${hero_style.hero} ${className}`} onClick={next_hero}>
-            <button className={hero_style.prev_btn}>&#60;</button>
+        <div className={`${hero_style.hero} ${className}`}>
+            <button className={hero_style.prev_btn} onClick={prev_hero}>&#60;</button>
+            <div>{React.createElement(heroMessages[message])}</div> {/*syntax for creating react elemnt in the dom*/}
             <img src={heroImages[hero]} alt="Hero" />
-            <button className={hero_style.next_btn}>&#62;</button>   
+            <button className={hero_style.next_btn} onClick={next_hero}>&#62;</button>
         </div>
     );
 }
 
 export default Hero;
-
-
-/*
-Yes, `setInterval` and `clearInterval` are **inbuilt** JavaScript functions, but it's important to understand their syntax and how they work in the context of React state management.
-
-### 1. **Understanding `setInterval` and `clearInterval`**:
-These are part of the **JavaScript** standard API and are used for managing timed events.
-
-#### `setInterval` Syntax:
-```javascript
-const intervalId = setInterval(function, delay);
-```
-- **`function`**: The function to be executed after the specified delay.
-- **`delay`**: The time (in milliseconds) between each execution of the function.
-- **`intervalId`**: A unique identifier returned by `setInterval`. This ID is used to clear the interval later.
-
-#### `clearInterval` Syntax:
-```javascript
-clearInterval(intervalId);
-```
-- **`intervalId`**: The ID of the interval you want to clear. This ID is returned by `setInterval`.
-
----
-
-### 2. **How `prevState` Works in `setState` (React)**:
-In React, when you use the `useState` hook or `setState` in class components, React batches updates and uses the previous state value when updating the state.
-
-#### Explanation of `prevState`:
-```javascript
-setHero((prevState) => (prevState + 1) % heroImages.length);
-```
-
-In this case:
-- **`prevState`**: This refers to the previous state value of `hero` (i.e., the current index of the image). It is passed as an argument to the callback function provided to `setHero`.
-  
-  When you call `setHero`, React will **automatically** pass the current value of the state (`hero`) as `prevState` to the function you provide. This allows you to calculate the next state based on the current state.
-
-#### How Does React Know What `prevState` Refers To?
-React "knows" what `prevState` refers to because of how **state updates are handled**. When you call `setHero`, React:
-- **Queues up a state update**.
-- **Batches updates** to optimize performance.
-- **Passes the most recent state value** (`prevState`) to the state update function to ensure the next state is based on the previous one. This is especially important in cases where state updates depend on the previous state, like in a counter or an image carousel.
-
-This mechanism ensures React updates the state correctly, even if the update is asynchronous.
-
-### 3. **React and `setInterval`**:
-In React, you generally use `setInterval` to trigger actions (like image changes, animations, etc.) at regular intervals. The `useEffect` hook ensures that `setInterval` starts when the component is mounted and stops when the component unmounts (or when the interval is no longer needed).
-
-#### Example of `useEffect` with `setInterval`:
-```javascript
-useEffect(() => {
-    const interval = setInterval(() => {
-        setHero((prevState) => (prevState + 1) % heroImages.length);
-    }, 5000);
-
-    // Cleanup function to clear the interval when the component unmounts
-    return () => clearInterval(interval);
-}, [heroImages.length]); // Dependencies
-```
-- **`useEffect`**: The effect runs once when the component mounts, and the cleanup function clears the interval when the component unmounts.
-- **`setInterval`**: This sets the function to execute every 5000ms (5 seconds), changing the image every 5 seconds.
-- **`clearInterval(interval)`**: The cleanup function ensures that the interval is cleared when the component unmounts, preventing memory leaks.
-
----
-
-### Summary:
-- **`setInterval`** is an inbuilt JavaScript function that allows you to execute a function repeatedly with a specified delay.
-- **`clearInterval`** is used to stop the interval.
-- **`prevState`** is the previous state value, and React automatically passes it when you update state based on the previous value. This is how React ensures your state updates are based on the latest available value.
-
-Let me know if you need further clarification!
-*/

@@ -12,3 +12,21 @@ Place the create team form beneath the teams table. or above it instead of creat
 
 
 handle the overflow-y: auto , scrollbar alway displayed error in the tables css files.
+
+
+-------------------------------------------------------------------------------------
+
+
+Some components left unadded in the Hero section, ut they have been imported, use them in 
+the end and design their messages accordingly.
+
+
+-------------------------------------------------------------------------------------
+
+
+
+-------------------------------------------------------------------------------------
+
+
+
+-------------------------------------------------------------------------------------
