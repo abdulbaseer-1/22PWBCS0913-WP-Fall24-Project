@@ -12,7 +12,7 @@ function Settings() {
       <Content className={setting_style.contentBody}>
         <div>
           <a href="/Change_Password">Change Password</a><br />
-          <a href="/Edit_Profile">Edit Profile</a><br />
+          <a href="/User_Profile">Edit Profile</a><br />
           <a href="/Recovery_Options">Set Recovery options</a><br />
         </div>
       </Content>

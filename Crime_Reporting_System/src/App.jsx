@@ -30,7 +30,7 @@ function App() {
           <Route path="/Teams" element={<Teams />} />
           <Route path="/Settings" element={<Settings />} />
           <Route path="/Contact_Us" element={<Contact_Us />} />
-          {/* <Route path="/User_Profile" element={<User_Profile />} /> */}
+          <Route path="/User_Profile" element={<User_Profile />} />
           <Route path="*" element={<NoPage />} />
         </Routes>
       </BrowserRouter>
