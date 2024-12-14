@@ -6,7 +6,6 @@
     min-height: 100px;
     margin: 10px;
     box-sizing: border-box;
-    display: inline-block;
     justify-content: center;
     align-items: center;
     overflow: auto; /*scroll bar only appears when childs length exceeds the parents*/
