@@ -2,6 +2,7 @@ import sidebar_style from "./Sidebar.module.css";
 function Admin_Sidebar({className}) {
     return(
         <div className={`${sidebar_style.sidebar} ${className}`}> {/*using this syntax will allow us to use external css on this later*/}
+            <div><br /></div>
             <a href="/Home">Home</a> {/* Use the path-names you've set in your app.js because they will link you to page"" . there are no actual html pages so no relative paths. */}
             <a href="/Report_a_Crime">Report Crime</a>
             <a href="/Pending_Cases">Pending cases</a>

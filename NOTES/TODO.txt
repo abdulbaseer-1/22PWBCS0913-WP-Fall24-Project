@@ -17,8 +17,7 @@ handle the overflow-y: auto , scrollbar alway displayed error in the tables css 
 -------------------------------------------------------------------------------------
 
 
-Some components left unadded in the Hero section, ut they have been imported, use them in 
-the end and design their messages accordingly.
+Learn the switch button syntax, and how to create and manage tables and forms.
 
 
 -------------------------------------------------------------------------------------
