@@ -1,9 +1,6 @@
 import styles from './Report_Form.module.css';
 import React, { useState } from 'react';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
-import Sidebar from '../sidebar/Sidebar';
-import Hero from '../Hero/Hero';
+
 
 function ReportACrime() {
   const [yourName, setYourName] = useState('');
@@ -47,58 +44,62 @@ function ReportACrime() {
         <div className={styles.crimeReportContainer}>
           <h2>Report a Crime</h2>
           <form onSubmit={handleSubmit}>
-            <div className={styles.formGroup}>
-              <label>Your Name:</label>
-              <input type="text" id="your-name" value={yourName} onChange={(e) => setYourName(e.target.value)} />
+            <div className={styles.inlineGroup}>
+              <div className={styles.formGroup}>
+                <label>Your Name:</label>
+                <input type="text" id="your-name" value={yourName} onChange={(e) => setYourName(e.target.value)} />
+              </div>
+              <div className={styles.formGroup}>
+                <label>Father's Name:</label>
+                <input type="text" id="fathers-name" value={fathersName} onChange={(e) => setFathersName(e.target.value)} />
+              </div>
             </div>
-            <div className={styles.formGroup}>
-              <label>Father's Name:</label>
-              <input type="text" id="fathers-name" value={fathersName} onChange={(e) => setFathersName(e.target.value)} />
+            <div className={styles.inlineGroup}>
+              <div className={styles.formGroup}>
+                <label>CNIC Number:</label>
+                <input type="text" id="cnic" value={cnic} onChange={(e) => setCnic(e.target.value.replace(/[^0-9]/g, ''))} />
+              </div>
+              <div className={styles.formGroup}>
+                <label>Phone:</label>
+                <input type="text" id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
+              </div>
             </div>
-            <div className={styles.formGroup}>
-              <label>CNIC Number:</label>
-              <input type="text" id="cnic" value={cnic} onChange={(e) => setCnic(e.target.value.replace(/[^0-9]/g, ''))} />
+            <div className={styles.inlineGroup}>
+              <div className={styles.formGroup}>
+                <label>Crime Type:</label>
+                <select id="crime-type" value={crimeType} onChange={(e) => setCrimeType(e.target.value)}>
+                  <option value="">Select Crime Type</option>
+                  <option value="theft">Hit and Run</option>
+                  <option value="robbery">Robbery</option>
+                  <option value="assault">Assault</option>
+                </select>
+              </div>
+              <div className={styles.formGroup}>
+                <label>Crime Date:</label>
+                <input type="date" id="crime-date" value={crimeDate} onChange={(e) => setCrimeDate(e.target.value)} />
+              </div>
             </div>
-            <div className={styles.formGroup}>
-              <label>Phone:</label>
-              <input type="text" id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
+            <div className={styles.inlineGroup}>
+              <div className={styles.formGroup}>
+                <label>Crime Location:</label>
+                <input type="text" id="crime-location" value={crimeLocation} onChange={(e) => setCrimeLocation(e.target.value)} />
+              </div>
             </div>
-            <div className={styles.formGroup}>
-              <label>Crime Type:</label>
-              <select id="crime-type" value={crimeType} onChange={(e) => setCrimeType(e.target.value)}>
-                <option value="">Select Crime Type</option>
-                <option value="theft">Theft</option>
-                <option value="robbery">Robbery</option>
-                <option value="assault">Assault</option>
-              </select>
+            <div className={styles.inlineGroup}>
+              <div className={styles.formGroup}>
+                <label>Suspect Description:</label>
+                <input type="text" id="suspect-description" value={suspectDescription} onChange={(e) => setSuspectDescription(e.target.value)} />
+              </div>
             </div>
-            <div className={styles.formGroup}>
-              <label>Crime Date:</label>
-              <input type="date" id="crime-date" value={crimeDate} onChange={(e) => setCrimeDate(e.target.value)} />
-            </div>
-            <div className={styles.formGroup}>
-              <label>Crime Location:</label>
-              <input type="text" id="crime-location" value={crimeLocation} onChange={(e) => setCrimeLocation(e.target.value)} />
-            </div>
-            <div className={styles.formGroup}>
-              <label>Suspect Description:</label>
-              <input type="text" id="suspect-description" value={suspectDescription} onChange={(e) => setSuspectDescription(e.target.value)} />
-            </div>
-            <div className={styles.formGroup}>
-              <label>Crime Description:</label>
-              <textarea id="crime-description" value={crimeDescription} onChange={(e) => setCrimeDescription(e.target.value)} />
-            </div>
-            <div className={styles.formGroup}>
-              <label>CNIC Picture:</label>
-              <input type="file" id="cnic-picture" onChange={(e) => setCnicPicture(e.target.files[0])} />
-            </div>
-            <div className={styles.formGroup}>
-              <label>Your Picture:</label>
-              <input type="file" id="user-picture" onChange={(e) => setUserPicture(e.target.files[0])} />
-            </div>
-            <div className={styles.formGroup}>
-              <label>Additional Proof (Picture):</label>
-              <input type="file" id="additional-proof" onChange={(e) => setAdditionalProof(e.target.files[0])} />
+            <div className={styles.inlineGroup}>
+              <div className={styles.formGroup}>
+                <label>Your Picture:</label>
+                <input type="file" id="user-picture" onChange={(e) => setUserPicture(e.target.files[0])} />
+              </div>
+              <div className={styles.formGroup}>
+                <label>Additional Proof (Picture):</label>
+                <input type="file" id="additional-proof" onChange={(e) => setAdditionalProof(e.target.files[0])} />
+              </div>
             </div>
             <button type="submit">Submit</button>
           </form>
