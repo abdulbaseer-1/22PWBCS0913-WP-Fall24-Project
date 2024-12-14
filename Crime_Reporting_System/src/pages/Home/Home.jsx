@@ -3,13 +3,14 @@ import Header from "../../components/Header/Header"
 import Footer from "../../components/Footer/Footer";
 import Hero from "../../components/Hero/Hero";
 import Content from "../../components/content/Content";
+import User_HomePage_DB from '../../components/HomePage/User_HomePage_DB';
 
 function Home() {
   return(
     <>
       <Header/>
       <Hero/>
-      <Content className={home_style.contentBody}></Content> {/*i think the reason why this is not being affected by external css is that this is an abstract element which has been defined in a separate file , thus to make changes , we should make changes there */}
+      <Content className={home_style.contentBody}><User_HomePage_DB/></Content>
       <Footer/>
     </>
   );

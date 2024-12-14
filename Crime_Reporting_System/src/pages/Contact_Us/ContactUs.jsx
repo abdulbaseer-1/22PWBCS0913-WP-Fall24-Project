@@ -3,9 +3,9 @@ import Header from "../../components/Header/Header"
 import Hero from "../../components/Hero/Hero";
 import Content from "../../components/content/Content";
 import Footer from "../../components/Footer/Footer";
-import monkey from "../../assets/ContactUs/monkey.jpg";
-import monkey2 from "../../assets/ContactUs/monkey2.jpg";
-import monkey3 from "../../assets/ContactUs/monkey3.jpg";
+import student1 from "../../assets/ContactUs/Student-1.jpeg";
+import student2 from "../../assets/ContactUs/Student-2.jpeg";
+import student3 from "../../assets/ContactUs/Student-3.jpg";
 import github_logo from "../../assets/icons/github.png";
 
 function ContactUs() {
@@ -13,35 +13,35 @@ function ContactUs() {
     <>
       <Header/>
       <Hero/>
-      <Content className={contact_style.contentBody}>
+        <Content className={contact_style.contentBody}>
         <div>
-          <h1 className={contact_style.heading}>Contact Us</h1>
-          <div className={contact_style.contact_container}>{/*flex with photos of me and my group members, description at the end */}
-            <div className={contact_style.contact}>
-              <img src={monkey} alt="pic 1" />
-              <h5>Meet Monke;) A very talented wise monkey</h5>
-              <p>A hardworking Computer Science student tasked with making this semester project</p>
-              <a href="https://github.com/abdulbaseer-1" target="_blank"><img src={github_logo} alt="github"/></a>
+            <h1>Contact Us</h1>
+            <div className={contact_style.contact_container}>{/*flex with photos of me and my group members, description at the end */}
+              <div className={contact_style.contact}>
+                <img src={student1} alt="pic 1" />
+                <h5>Meet : Abdul-Baseer ;)</h5>
+                <p>A hardworking Computer Science student tasked with making this semester project</p>
+                <a href="https://github.com/abdulbaseer-1" target="_blank"><img src={github_logo} alt="github"/></a>
+              </div>
+              <div className={contact_style.contact}>
+              <img src={student2} alt="pic 2" />
+                <h5>Meet : Zain-ul-Abideen ;)</h5>
+                <p>A hardworking Computer Science student tasked with making this semester projectS</p>
+                <a href="https://github.com/23pwbcs1019/23pwbcs1019-wp-f2024.git" target="_blank"><img src={github_logo} alt="github"/></a>
+              </div>
+              <div className={contact_style.contact}>
+              <img src={student3} alt="pic 3" />
+                <h5>Meet : Mudassir-Khan ;)</h5>
+                <p>A hardworking Computer Science student tasked with making this semester project</p>
+                <a href="https://github.com/abdulbaseer-1" target="_blank"><img src={github_logo} alt="github"/></a>
+              </div>
             </div>
-            <div className={contact_style.contact}>
-            <img src={monkey2} alt="pic 2" />
-              <h5>Meet Monke;)</h5>
-              <p>A hardworking Computer Science student tasked with making this semester projectS</p>
-              <a href="https://github.com/abdulbaseer-1" target="_blank"><img src={github_logo} alt="github"/></a>
-            </div>
-            <div className={contact_style.contact}>
-            <img src={monkey3} alt="pic 3" />
-              <h5>Meet Monke;)</h5>
-              <p>A hardworking Computer Science student tasked with making this semester project</p>
-              <a href="https://github.com/abdulbaseer-1" target="_blank"><img src={github_logo} alt="github"/></a>
+            <div className={contact_style.description}>
+              <h3>Descrition:</h3>
+              <p>Our team, Abdul-Baseer, Zain-uL-Abideen, and Mudasir-Khan, has developed this crime alert website that provides an easy-to-use platform for reporting crimes and staying informed. With expertise in frontend development, backend integration, and UI design, we’ve created a secure and efficient service. Data privacy and security remain our top priorities in offering a trusted platform for the community.</p>
             </div>
           </div>
-          <div className={contact_style.description}>
-            <h3>Descrition:</h3>
-            <p>Lorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum quis debitis eligendi asperiores deserunt consequuntur perspiciatis ab, ducimus suscipit assumenda eos magnam quas temporibus aspernatur distinctio accusantium voluptatem libero accusamus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Est eos obcaecati minus facere autem inventore, doloremque nulla. Quo architecto nihil totam repudiandae natus deleniti, hic aliquam harum distinctio, cumque error? ipsum, dolor sit amet consectetur adipisicing elit. Quia, neque, enim aut laborum reprehenderit totam consequuntur facilis nulla, porro eius laudantium quisquam minus id dolorem incidunt culpa ipsam natus. Vitae.</p>
-          </div>
-        </div>
-      </Content>
+        </Content>
       <Footer/>
     </>
   );

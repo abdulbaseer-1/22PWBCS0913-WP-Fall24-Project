@@ -32,7 +32,12 @@
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
   padding: 20px;
   text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s; /*really cool trick, notice the shadow moving*/
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.contentBody .contact:hover {
+  transform: translateY(-5px); /* Slight lift effect */
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
 }
 .contentBody .contact > img{
   width: 100px;
@@ -48,7 +53,7 @@
   min-width: 250px;
   max-width: 250px;
 }
-.contentBody .contact > p{
+.contentBody .contact > p {
   max-width: 250px;
 }
 

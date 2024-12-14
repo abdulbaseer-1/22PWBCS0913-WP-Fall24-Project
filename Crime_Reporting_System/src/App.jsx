@@ -1,4 +1,4 @@
-import { BrowserRouter,Routes,Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Sign_in from "./pages/Sign_in/Sign_in";
 import Sign_up from "./pages/Sign_up/Sign_up";
 import Home from "./pages/Home/Home";
@@ -11,33 +11,35 @@ import Teams from "./pages/Teams/Teams";
 import Settings from "./pages/Settings/Settings";
 import Contact_Us from "./pages/Contact_Us/ContactUs";
 import NoPage from "./pages/NoPage/Nopage";
+import User_Profile from "./pages/User_Profile/User_Profile";
 
 function App() {
-    return(
-        <div>
-            <BrowserRouter> {/*Read note at bottom */}
-                <Routes>
-                    <Route index element={<Home/>}/>
-                    <Route path="/Sign_in" element={<Sign_in/>}/>
-                    <Route path="/Sign_up" element={<Sign_up/>}/>
-                    <Route path="/Home" element={<Home/>}/>
-                    <Route path="/Report_a_Crime" element={<Report_a_Crime/>}/>
-                    <Route path="/Pending_Cases" element={<Pending_Cases/>}/>
-                    <Route path="/Closed_Cases" element={<Closed_Cases/>}/>
-                    <Route path="/Ongoing_Investigations" element={<Ongoing_Investigations/>}/>
-                    <Route path="/Local_Felonies" element={<Local_Felonies/>}/>
-                    <Route path="/Teams" element={<Teams/>}/>
-                    <Route path="/Settings" element={<Settings/>}/>
-                    <Route path="/Contact_Us" element={<Contact_Us/>}/>
-                    <Route path="*" element={<NoPage/>}/> {/*The * refers to all like in sql, but since the pages
-                                                             are referenced sequentially, thus if know pages are requested, they will be displayed*/}
-                </Routes>         
-            </BrowserRouter>
-        </div>
-    );
-};
+  return (
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="/Sign_in" element={<Sign_in />} />
+          <Route path="/Sign_up" element={<Sign_up />} />
+          <Route path="/Home" element={<Home />} />
+          <Route path="/Report_a_Crime" element={<Report_a_Crime />} />
+          <Route path="/Pending_Cases" element={<Pending_Cases />} />
+          <Route path="/Closed_Cases" element={<Closed_Cases />} />
+          <Route path="/Ongoing_Investigations" element={<Ongoing_Investigations />} />
+          <Route path="/Local_Felonies" element={<Local_Felonies />} />
+          <Route path="/Teams" element={<Teams />} />
+          <Route path="/Settings" element={<Settings />} />
+          <Route path="/Contact_Us" element={<Contact_Us />} />
+          {/* <Route path="/User_Profile" element={<User_Profile />} /> */}
+          <Route path="*" element={<NoPage />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
+}
 
 export default App;
+
 
 /*
 in order to make multiple pages in react we use the npm react-router-dom package, which routes urls to their respective
