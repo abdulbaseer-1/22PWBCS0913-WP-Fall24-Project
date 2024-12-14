@@ -3,6 +3,8 @@ import notification_logo from "../../assets/icons/notification.png";
 import notification_active_logo from "../../assets/icons/notification_active.png";
 import law_scales from "../../assets/banner/law_scales.png";
 import user_icon from "../../assets/icons/login.png";
+import User_Profile from '../../pages/User_Profile/User_Profile';
+
 // import trailing_dove from "../../assets/banner/trailing_dove-removebg-preview.png";
 function Header({className}) {
     let notification_count = 0; // to take from a backend function which checks notification count
