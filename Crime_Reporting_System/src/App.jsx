@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Sign_in from "./pages/Sign_in/Sign_in";
-import Sign_up from "./pages/Sign_up/Sign_up";
+import Sign_in_Sign_up from "./pages/Signinsignup/Signinsignup";
 import Home from "./pages/Home/Home";
 import Report_a_Crime from "./pages/Report_a_Crime/Report_a_Crime";
 import Pending_Cases from "./pages/Pending_Cases/Pending_Cases";
@@ -12,6 +11,8 @@ import Settings from "./pages/Settings/Settings";
 import Contact_Us from "./pages/Contact_Us/ContactUs";
 import NoPage from "./pages/NoPage/Nopage";
 import User_Profile from "./pages/User_Profile/User_Profile";
+import ChangePassword from "./pages/ChangePassword/ChangePassword";
+import Recovery_Options from "./pages/RecoveryPhone/RecoveryPhone";
 
 function App() {
   return (
@@ -19,8 +20,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route index element={<Home />} />
-          <Route path="/Sign_in" element={<Sign_in />} />
-          <Route path="/Sign_up" element={<Sign_up />} />
+          <Route path="/Signin_Signup" element={<Sign_in_Sign_up/>} />
           <Route path="/Home" element={<Home />} />
           <Route path="/Report_a_Crime" element={<Report_a_Crime />} />
           <Route path="/Pending_Cases" element={<Pending_Cases />} />
@@ -31,6 +31,9 @@ function App() {
           <Route path="/Settings" element={<Settings />} />
           <Route path="/Contact_Us" element={<Contact_Us />} />
           <Route path="/User_Profile" element={<User_Profile />} />
+          <Route path="/Recovery_Options" element={<Recovery_Options/>}></Route>
+          <Route path="/Change_Password" element={<ChangePassword/>}></Route>
+
           <Route path="*" element={<NoPage />} />
         </Routes>
       </BrowserRouter>
