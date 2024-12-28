@@ -26,3 +26,15 @@ Note to include child props if to be used later, in container body component
 -------------------------------------------------------------------------------
 
 Using same names for css dosent create conflict in modules as modules are given unique names at build time
+
+
+--------------------------------------------------------------------------------
+
+
+defalt exports vs named exports;
+default are the ones with, export default name; // imported without braces.
+named exports are the ones with, export name; // imported with braces(i.e. inside braces).        (look at app.jsx imports for syntax)
+
+
+
+------------------------------------------------------------------------------------
