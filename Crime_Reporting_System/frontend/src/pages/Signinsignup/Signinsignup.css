@@ -83,6 +83,10 @@
     font-weight: 700;
     cursor: pointer;
 }
+.submit_form:hover{
+    transform: scale(1.001);
+}
+
 .submit{
     display: flex;
     justify-content: center;

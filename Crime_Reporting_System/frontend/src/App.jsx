@@ -13,30 +13,33 @@ import NoPage from "./pages/NoPage/Nopage";
 import User_Profile from "./pages/User_Profile/User_Profile";
 import ChangePassword from "./pages/ChangePassword/ChangePassword";
 import Recovery_Options from "./pages/RecoveryPhone/RecoveryPhone";
+import {UserProvider} from "./components/contexts/userContext"; // named import
 
 function App() {
   return (
     <div>
-      <BrowserRouter>
-        <Routes>
-          <Route index element={<Home />} />
-          <Route path="/Signin_Signup" element={<Sign_in_Sign_up/>} />
-          <Route path="/Home" element={<Home />} />
-          <Route path="/Report_a_Crime" element={<Report_a_Crime />} />
-          <Route path="/Pending_Cases" element={<Pending_Cases />} />
-          <Route path="/Closed_Cases" element={<Closed_Cases />} />
-          <Route path="/Ongoing_Investigations" element={<Ongoing_Investigations />} />
-          <Route path="/Local_Felonies" element={<Local_Felonies />} />
-          <Route path="/Teams" element={<Teams />} />
-          <Route path="/Settings" element={<Settings />} />
-          <Route path="/Contact_Us" element={<Contact_Us />} />
-          <Route path="/User_Profile" element={<User_Profile />} />
-          <Route path="/Recovery_Options" element={<Recovery_Options/>}></Route>
-          <Route path="/Change_Password" element={<ChangePassword/>}></Route>
+      <UserProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route index element={<Sign_in_Sign_up />} />
+            <Route path="/Signin_Signup" element={<Sign_in_Sign_up/>} />
+            <Route path="/Home" element={<Home />} />
+            <Route path="/Report_a_Crime" element={<Report_a_Crime />} />
+            <Route path="/Pending_Cases" element={<Pending_Cases />} />
+            <Route path="/Closed_Cases" element={<Closed_Cases />} />
+            <Route path="/Ongoing_Investigations" element={<Ongoing_Investigations />} />
+            <Route path="/Local_Felonies" element={<Local_Felonies />} />
+            <Route path="/Teams" element={<Teams />} />
+            <Route path="/Settings" element={<Settings />} />
+            <Route path="/Contact_Us" element={<Contact_Us />} />
+            <Route path="/User_Profile" element={<User_Profile />} />
+            <Route path="/Recovery_Options" element={<Recovery_Options/>}></Route>
+            <Route path="/Change_Password" element={<ChangePassword/>}></Route>
 
-          <Route path="*" element={<NoPage />} />
-        </Routes>
-      </BrowserRouter>
+            <Route path="*" element={<NoPage />} />
+          </Routes>
+        </BrowserRouter>
+      </UserProvider>
     </div>
   );
 }
