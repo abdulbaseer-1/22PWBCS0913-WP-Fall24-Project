@@ -15,7 +15,6 @@ import { dirname, resolve } from 'path';
 import logger from './controllers/logger.js';
 import userRoutes from './routes/user.routes.js';
 import cors from 'cors'; // cors library, look it up
-import multer from 'multer';
 
 // Recreate __dirname for ES6 modules
 const __filename = fileURLToPath(import.meta.url); //gives the filepath

@@ -1,6 +1,6 @@
 import express from 'express';
 import userController from '../controllers/userController.js';
-
+import {upload} from '../controllers/userController.js';
 const router = express.Router();
 
 //get all users api
@@ -9,8 +9,8 @@ router.get('/', userController.getUsers);
 router.get('/:id', userController.getUser);
 
 //create user api
-router.post('/', userController.createUser);
-
+router.post('/', upload, userController.createUser); // upload.fields[] already defined in userController.js
+ 
 
 //update a user
 router.put('/:id',userController. updateUser);
