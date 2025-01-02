@@ -2,6 +2,7 @@ import styles from './User_Profile_Form.module.css';
 import React, { useState } from 'react';
 import useUser from '../contexts/userContext';
 import axios from 'axios';
+import MyButton from '../justabutton/Button';
 
 function User_Profile_Form() {
   const [Name, setName] = useState('');
@@ -28,13 +29,13 @@ function User_Profile_Form() {
     userData.append('username', signupDetails.username);
     userData.append('email', signupDetails.email);
     userData.append('password', signupDetails.password);
-    userData.append('Name', Name);
-    userData.append('fathersName', fathersName);
-    userData.append('cnic', cnic);
+    userData.append('name', Name);
+    userData.append('fathers_name', fathersName);
+    userData.append('CNIC', cnic);
     userData.append('phone', phone);
     userData.append('address', address);
-    userData.append('cnicPicture', cnicPicture);
-    userData.append('userPicture', userPicture);
+    userData.append('CNIC_Front_Image', cnicPicture);
+    userData.append('userImage', userPicture);
 
     // Log form data for debugging
     for (let [key, value] of userData.entries()) {
@@ -58,7 +59,7 @@ function User_Profile_Form() {
       <div className={styles.content_area}>
         <div className={styles.crimeReportContainer}>
           <h2>User Profile</h2>
-
+          <MyButton>view profile</MyButton>
           <form onSubmit={handleSubmit}>
             <div className={styles.formGroup}>
               <label>Your Name:</label>

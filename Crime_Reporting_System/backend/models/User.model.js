@@ -39,11 +39,11 @@ const userSchema = new mongoose.Schema(
     },
     CNIC_Front_Image: {
       type: String, // Assuming a file path or URL will be stored
-      required: [true, 'Please provide the CNIC front image'],
+      required: [false, 'Please provide the CNIC front image'],
     },
     userImage: {
       type: String, // Assuming a file path or URL will be stored
-      required: [true, 'Please provide your image'],
+      required: [false, 'Please provide your image'],
     },
   },
   {

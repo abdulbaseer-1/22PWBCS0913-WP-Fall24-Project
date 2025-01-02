@@ -41,11 +41,14 @@ app.use(cors({
   origin: 'http://localhost:5173' 
 }));
 
-app.use(express.json()); // im gin to use urlEncoded for my forms etc later.
-app.use(express.urlencoded({extended: true}));
 
 //APIs
 app.use('/api/users', userRoutes);
+
+app.use(express.json()); // im gin to use urlEncoded for my forms etc later.
+app.use(express.urlencoded({extended: true}));
+
+
 
 // connect to DB and Start the server
 mongoose.connect('mongodb://localhost:27017/')

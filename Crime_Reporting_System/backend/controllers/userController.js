@@ -1,37 +1,10 @@
 import User from "../models/User.model.js";
-import multer from "multer";
-import { dirname, resolve } from 'path';
-import { fileURLToPath } from 'url';
 import { existsSync } from 'fs';
-
-
+import { resolve, dirname } from "path";
+import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url); 
 const __dirname = dirname(__filename);
-
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, resolve(__dirname, '../../database/uploads'));
-    },
-    filename: (req, file, cb) => {
-        cb(null, `${Date.now()}-${file.originalname}`); // Unique filename
-    }
-});
-
-export const upload = multer({
-    storage,
-    limits: { fileSize: 15 * 1024 * 1024 }, // Max file size (15mb)
-    fileFilter: (req, file, cb) => {
-        const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
-        if (!allowedTypes.includes(file.mimetype)) {
-            return cb(new Error('Invalid file type. Only JPG, JPEG, and PNG are allowed.'));
-        }
-        cb(null, true);
-    }
-}).fields([
-    { name: 'CNIC_Front_Image', maxCount: 1 },
-    { name: 'userImage', maxCount: 1 }
-]);
 
 const getUsers = async (req, res) => {
     try {
@@ -57,7 +30,14 @@ const getUser = async (req, res) => {
 };
 
 const createUser = async (req, res) => {
+    console.log("inside createUser function");
+    console.log('Uploads directory exists:', existsSync(resolve(__dirname, '../../database/uploads')));
+
+    console.log('Request files:', req.files);
+    console.log('Request body:', req.body);
     try{
+        console.log('inside try block');
+
         const CNIC_Front_Image = req.files?.CNIC_Front_Image ? req.files.CNIC_Front_Image[0].filename : null;
         const userImage = req.files?.userImage ? req.files.userImage[0].filename : null;
 
@@ -77,12 +57,6 @@ const createUser = async (req, res) => {
         res.status(201).json({message: "user created", user});
         
     }catch (error) {
-        console.log("got here");
-        console.log('Uploads directory exists:', existsSync(resolve(__dirname, '../../database/uploads')));
-
-        console.log('Request files:', req.files);
-        console.log('Request body:', req.body);
-
         console.error("Error occurred while creating user: ", error); 
         res.status(500).json({message: error.message}); // check out express demo to find out more about error.msg
     }
