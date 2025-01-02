@@ -2,21 +2,22 @@ import React, { useContext, useState } from 'react';
 import './Signinsignup.css'
 import useUser from '../../components/contexts/userContext.jsx'; //my Context // default export imported
 import { useNavigate } from 'react-router-dom'; // navigate to other page on some event // finally got what i was lookin for eh
+import axios from 'axios'; // Importing axios for sending HTTP requests
 
 const Signinsignup = () => {
-    const [action,setAction] = useState("Sign Up");
+    const [action, setAction] = useState("Sign Up");
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     //for checking userstate -> admin or mango people
     const [userstate, setUserstate] = useState('normal_user');
-    // the brace suggest a named export, i.e. the setSignupDetals funcion of useUser itsself.
-    const {setSignupDetails} = useUser(); // i dont need to use the useContext hook again b/c i used it in the context creatipon component, check it out.
-    //setting uup navigator hook, is it a hook?
+    // the brace suggest a named export, i.e. the setSignupDetals function of useUser itself.
+    const { setSignupDetails } = useUser(); // i don't need to use the useContext hook again b/c i used it in the context creation component, check it out.
+    //setting up navigator hook, is it a hook?
     const navigate = useNavigate();
 
-    const handleUsername = (event) => { // if you use a callback in the setfunct() . The parent event and the child is diff, so this is the correct synatx
+    const handleUsername = (event) => { // if you use a callback in the set function, the parent event and the child are different, so this is the correct syntax
         if(action === "Sign Up") // only required where the field is used in both sign in and signup
         setUsername(event.target.value);
     };
@@ -32,8 +33,35 @@ const Signinsignup = () => {
     }
 
     // login logic
+    const handleLogin = async () => {
+        try {
+            // Sending a POST request to the backend API for login
+            const response = await axios.post('http://localhost:5000/api/login', { email, password });
+            if (response.status === 200) {
+                // Successfully logged in
+                alert(response.data.message); // Show login success message
+                
+                // Navigate based on user role (admin or user)
+                const role = response.data.role; // assuming role is returned in the response
+                
+                // Store the role in localStorage
+                localStorage.setItem('role', role);  // Save role to localStorage
 
-    // admin vs normal user lgic !!!!!!!!!!!!!!!!!!!!!!! for admin and normal dashboard. put inside the handle submit at the end
+                if (role === "admin") {
+                    navigate("/Home"); // Redirect to home page but with admin sidebar
+                } else if (role === "user") {
+                    navigate("/Home"); // Redirect to home page but with the user sidebar
+                } else {
+                    alert("Unknown role, please contact support.");
+                }
+            }
+        } catch (error) {
+            // Handle error, e.g., wrong credentials or server issues
+            alert(error.response?.data?.message || "Login failed. Please try again.");
+        }
+    };
+
+    // admin vs normal user logic !!!!!!!!!!!!!!!!!!!!!!! for admin and normal dashboard. put inside the handle submit at the end
     // const userState = () => {
     //     if(action === "Sign In") { // this will be tested on sign in , admins will have their own db where admins will be stored
     //         setUserstate(() => {
@@ -41,7 +69,7 @@ const Signinsignup = () => {
     //         });
     //     }
     // }
-
+    
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -63,7 +91,7 @@ const Signinsignup = () => {
             return;
         }
 
-        setSignupDetails({username, email, password}); // a funct to change the sigupDetails inside the useUser.
+        setSignupDetails({username, email, password}); // a function to change the signupDetails inside the useUser.
         if(action === "Sign Up") {
         navigate("/User_Profile"); // takes routes not paths
         console.log("Navigate to profile page");
@@ -97,7 +125,7 @@ const Signinsignup = () => {
             </div>
             {action=="Sign Up"?<div></div>:<div className="forgot-password">Forgot password? <span>Click here!</span></div>}
             <div className="submit-container">
-            <div className="submit_form" onClick={handleSubmit}>Submit</div>
+            <div className="submit_form" onClick={action === "Sign In" ? handleLogin : handleSubmit}>Submit</div>
         </div>
             <div className="submit-container">
                 <div className={action==="Sign Up"?"submit gray":"submit"} onClick={()=>{setAction("Sign Up")}}>Sign Up</div>
