@@ -18,14 +18,14 @@ const Signinsignup = () => {
     const navigate = useNavigate();
 
     const handleUsername = (event) => { // if you use a callback in the set function, the parent event and the child are different, so this is the correct syntax
-        if(action === "Sign Up") // only required where the field is used in both sign in and signup
+        // if(action === "Sign Up") // only required where the field is used in both sign in and signup
         setUsername(event.target.value);
     };
     const handleEmail = (event) => {
         setEmail(event.target.value);
     };
     const handlePassword = (event) => {
-        if(action === "Sign Up")
+        // if(action === "Sign Up")
         setPassword(event.target.value);
     };
     const handlePasswordConfirmation = (event) => {
@@ -36,13 +36,26 @@ const Signinsignup = () => {
     const handleLogin = async () => {
         try {
             // Sending a POST request to the backend API for login
-            const response = await axios.post('http://localhost:5000/api/login', { email, password });
+            console.log("username : " + username + "\n" + "password : " + password);
+
+            const response = await axios.post('https://localhost:8080/api/users/login',{
+                username,
+                password, },
+                {
+                headers:{
+                    'Content-Type': 'application/json',
+                },
+                withCredentials:true,
+            });
             if (response.status === 200) {
                 // Successfully logged in
-                alert(response.data.message); // Show login success message
+                console.log(response.data.message); // Show login success message
                 
+                console.log("checking role now");
                 // Navigate based on user role (admin or user)
-                const role = response.data.role; // assuming role is returned in the response
+                const role = response.data.user.role; // its .user.role not just .role b/c respone can send multiple objects, and the user object sent here has the role
+                console.log("role : " + role);
+                console.log("role : ", role);
                 
                 // Store the role in localStorage
                 localStorage.setItem('role', role);  // Save role to localStorage
@@ -59,21 +72,9 @@ const Signinsignup = () => {
             // Handle error, e.g., wrong credentials or server issues
             alert(error.response?.data?.message || "Login failed. Please try again.");
         }
-    };
+    };   
 
-    // admin vs normal user logic !!!!!!!!!!!!!!!!!!!!!!! for admin and normal dashboard. put inside the handle submit at the end
-    // const userState = () => {
-    //     if(action === "Sign In") { // this will be tested on sign in , admins will have their own db where admins will be stored
-    //         setUserstate(() => {
-    //             //
-    //         });
-    //     }
-    // }
-    
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        
+    const handleSubmit = () => {
         if(!username.trim()) {
             alert("username is required");  // if the username is empty after trimming whitespace
             return;

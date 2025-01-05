@@ -14,7 +14,13 @@ import { fileURLToPath } from 'url';
 import { dirname, resolve } from 'path';
 import logger from './controllers/logger.js';
 import userRoutes from './routes/user.routes.js';
+import reportRoutes from './routes/report.routes.js';
 import cors from 'cors'; // cors library, look it up
+import sessionMiddleware from './middleware/Session.js';
+import https from 'https';
+import fs from 'fs';
+import path from 'path';
+
 
 // Recreate __dirname for ES6 modules
 const __filename = fileURLToPath(import.meta.url); //gives the filepath
@@ -35,18 +41,29 @@ const app = express();
 
 //middleware
 //allow requestd from following, to prevent CORS errors,  Allow all origins (for development, make sure to restrict this in production)
-app.use(logger); // not inbuilt
-
+//frontend origin
+//allowed methods
+//allowed headers
 app.use(cors({
-  origin: 'http://localhost:5173' 
+  origin: 'https://localhost:5173',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
 }));
+
+app.use(express.json()); // im going to use urlEncoded for my forms etc later.
+app.use(express.urlencoded({extended: true}));
+
+//session middleware
+app.use(sessionMiddleware);
+
+app.use(logger); // not inbuilt
 
 
 //APIs
 app.use('/api/users', userRoutes);
+app.use('/api/reports', reportRoutes); // will rename but jugar here, both are api, so which to enter, just enter the first
 
-app.use(express.json()); // im gin to use urlEncoded for my forms etc later.
-app.use(express.urlencoded({extended: true}));
 
 
 
@@ -54,7 +71,13 @@ app.use(express.urlencoded({extended: true}));
 mongoose.connect('mongodb://localhost:27017/')
     .then(() => {
         console.log('Connected to MongoDB');
-        app.listen(PORT, () => {
+        //converting to https server
+        const server = https.createServer({
+          key: fs.readFileSync(path.join(__dirname, '../config/certificates/key.pem')),
+          cert: fs.readFileSync(path.join(__dirname, '../config/certificates/cert.pem')),
+        }, app);
+
+        server.listen(PORT, () => { // server.listen for https
             console.log(`Server is listening on port ${PORT}`);
         });
     })

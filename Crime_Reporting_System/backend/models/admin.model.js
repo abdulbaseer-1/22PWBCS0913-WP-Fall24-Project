@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 // Admin Schema
 const adminSchema = new mongoose.Schema({
-    cnic: {
+    CNIC: {
         type: String,
         required: [true, 'Please enter CNIC'],
         unique: true,

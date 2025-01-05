@@ -3,8 +3,15 @@ import User from '../models/User.model.js'; // Assuming User model already exist
 
 const checkAdmin = async (req, res, next) => {
     try {
-        const { cnic } = req.body; // Assuming CNIC is sent in the request body
-        const admin = await Admin.findOne({ cnic }); // Check if the CNIC exists in the admin collection
+        const {username} = req.body;
+        const user = await User.findOne({username});
+
+        if(!user) {
+            req.role = 'guest';
+            return next(); // No user found; role remains 'guest' // exit out of this middleware
+        }
+
+        const admin = await Admin.findOne({ CNIC : user.CNIC }); // Check if the CNIC exists in the admin collection
 
         if (admin) {
             req.role = 'admin';  // Mark role as admin
@@ -19,3 +26,7 @@ const checkAdmin = async (req, res, next) => {
 };
 
 export default checkAdmin;
+ 
+/*
+Notes:Middleware functions like checkAdmin are typically designed to intercept a request before reaching the controller function.
+*/

@@ -1,26 +1,21 @@
-import User from "../models/User.model.js";
-import { existsSync } from 'fs';
-import { resolve, dirname } from "path";
+import Criminal from "../models/User.model.js";
 import { fileURLToPath } from 'url';
 import bcrypt from 'bcrypt';
 
-const __filename = fileURLToPath(import.meta.url); 
-const __dirname = dirname(__filename);
-
-const getUsers = async (req, res) => {
+const getCriminals = async (req, res) => {
     try {
-        const users = await User.find({});
-        res.status(200).json({users});
+        const criminals = await Criminal.find({});
+        res.status(200).json({criminals});
       } catch (error) {
         res.status(500).json({ message: error.message });
       }
 };
 
-const getUser = async (req, res) => {
+const getCriminal = async (req, res) => {
     try{
-        const id = req.params.id; //extract value from parameters as string
-        const user = await User.findById(id);
-        res.status(200).json(user);
+        const cnic = req.params.cinc; //extract value from parameters as string
+        const criminal = await Criminal.findOne({CNIC: cnic});
+        res.status(200).json(criminal);
 
         if(!user) {
             return res.status(404).json({message:"Error User not found"});
@@ -30,11 +25,11 @@ const getUser = async (req, res) => {
     }
 };
 
-const createUser = async (req, res) => {
+const createCriminal = async (req, res) => {
     try{
-        console.log('inside try block');
+        console.log('inside criminal try block');
 
-        const CNIC_Front_Image = req.files?.CNIC_Front_Image ? req.files.CNIC_Front_Image[0].filename : null;
+        const Criminal = req.files?.CNIC_Front_Image ? req.files.CNIC_Front_Image[0].filename : null;
         const userImage = req.files?.userImage ? req.files.userImage[0].filename : null;
 
         //hash the password before storing in db // safer for production
