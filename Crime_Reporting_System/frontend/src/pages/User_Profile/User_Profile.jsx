@@ -5,7 +5,7 @@ import Footer from "../../components/Footer/Footer";
 import Hero from "../../components/Hero/Hero";
 import Content from "../../components/content/Content";
 
-import React from 'react'
+import React from 'react';
 
 function User_Profile() {
   return (
