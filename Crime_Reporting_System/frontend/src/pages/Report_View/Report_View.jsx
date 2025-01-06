@@ -1,19 +1,19 @@
-import style from './Criminal_Profileview.module.css';
+import style from './Report_View.module.css';
 import Header from "../../components/Header/Header"
 import Footer from "../../components/Footer/Footer";
 import Hero from "../../components/Hero/Hero";
 import Content from "../../components/content/Content";
-import CriminalProfile from '../../components/criminal_profileview/criminal_profileview';
+import Report_View from '../../components/Report_View/Report_View';
 
-function Criminal_Profile() {
+function ReportView() {
   return(
     <>
       <Header/>
       
-      <Content className={style.contentBody}><CriminalProfile/></Content>
+      <Content className={style.contentBody}><Report_View/></Content>
       <Footer/>
     </>
   );
 }
 
-export default Criminal_Profile;
+export default ReportView;
