@@ -1,29 +1,50 @@
-import React from 'react';
-import styles from './criminal_profileview.module.css';
-import CriminalImage from './Student-1.jpeg'
+import React, { useState, useEffect } from 'react';
+import styles from './Report_View.module.css';
+import CriminalImage from './Student-1.jpeg';
 
 const CriminalProfile = () => {
-  // Static criminal data
-  const criminal = {
-    name: "Abdul Baseer",
-    crime: "Robbery",
-    felonRepeated: true,
-    feloniesCount: 3,
-    description: "A notorious criminal with multiple offenses.",
-    image: CriminalImage 
-  };
+  // State for criminal data
+  const [report, setReport] = useState({
+    reporterName: "",
+    reporter_father_name: "",
+    reporterCNIC: "",
+    reporter_Phone: "",
+    crime_type: "",
+    crime_date: "",
+    crime_location: "",
+    suspect_description: "",
+    crime_description: "",
+    CNIC_Front_Image: "",
+    ReporterImage: CriminalImage,
+    ProofImage: ""
+  });
+
+  // useEffect to simulate fetching data from an API
+  useEffect(() => {
+    // Simulate an API call to get the report data
+  }, []); // Empty array means this runs only on component mount
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.heading}>Criminal Profile</h1>
+      <h1 className={styles.heading}>Crime Report</h1>
       <div className={styles.profile}>
-        <img src={criminal.image} alt="Criminal" className={styles.image} />
+        <img src={report.ReporterImage} alt="Reporter" className={styles.image} />
         <div className={styles.details}>
-          <p><strong>Name:</strong> {criminal.name}</p>
-          <p><strong>Crime:</strong> {criminal.crime}</p>
-          <p><strong>Felon Repeated:</strong> {criminal.felonRepeated ? 'Yes' : 'No'}</p>
-          <p><strong>Felonies Count:</strong> {criminal.feloniesCount}</p>
-          <p><strong>Description:</strong> {criminal.description}</p>
+          <p><strong>Reporter Name:</strong> {report.reporterName}</p>
+          <p><strong>Father's Name:</strong> {report.reporter_father_name}</p>
+          <p><strong>CNIC:</strong> {report.reporterCNIC}</p>
+          <p><strong>Phone Number:</strong> {report.reporter_Phone}</p>
+          <p><strong>Crime Type:</strong> {report.crime_type}</p>
+          <p><strong>Crime Date:</strong> {new Date(report.crime_date).toDateString()}</p>
+          <p><strong>Crime Location:</strong> {report.crime_location}</p>
+          <p><strong>Suspect Description:</strong> {report.suspect_description}</p>
+          <p><strong>Crime Description:</strong> {report.crime_description}</p>
+          {report.CNIC_Front_Image && (
+            <img src={report.CNIC_Front_Image} alt="CNIC Front" className={styles.image} />
+          )}
+          {report.ProofImage && (
+            <img src={report.ProofImage} alt="Proof" className={styles.image} />
+          )}
         </div>
       </div>
     </div>
