@@ -8,6 +8,8 @@ import Ongoing_Investigations from "./pages/Ongoing_Investigations/Ongoing_Inves
 import Local_Felonies from "./pages/Local_Felonies/Local_Felonies";
 import Teams from "./pages/Teams/Teams";
 import Settings from "./pages/Settings/Settings";
+import User_ProfileView from "./pages/User_Profileview/User_Profileview"; // Updated import for User_ProfileView
+import Report_View from "./pages/Report_View/Report_View"; // Importing Criminal_ProfileView
 import Contact_Us from "./pages/Contact_Us/ContactUs";
 import NoPage from "./pages/NoPage/Nopage";
 import User_Profile from "./pages/User_Profile/User_Profile";
@@ -32,6 +34,14 @@ function App() {
             <Route path="/Teams" element={<Teams />} />
             <Route path="/Settings" element={<Settings />} />
             <Route path="/Contact_Us" element={<Contact_Us />} />
+            <Route
+              path="/User_ProfileView"
+              element={<User_ProfileView />}
+            />{" "}
+            <Route
+              path="/Report_View"
+              element={<Report_View />}
+            />{" "}
             <Route path="/User_Profile" element={<User_Profile />} />
             <Route path="/Recovery_Options" element={<Recovery_Options/>}></Route>
             <Route path="/Change_Password" element={<ChangePassword/>}></Route>
