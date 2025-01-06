@@ -8,14 +8,12 @@ import Ongoing_Investigations from "./pages/Ongoing_Investigations/Ongoing_Inves
 import Local_Felonies from "./pages/Local_Felonies/Local_Felonies";
 import Teams from "./pages/Teams/Teams";
 import Settings from "./pages/Settings/Settings";
-import User_ProfileView from "./pages/User_Profileview/User_Profileview"; // Updated import for User_ProfileView
-import Criminal_ProfileView from "./pages/Criminal_Profileview/Criminal_Profileview"; // Importing Criminal_ProfileView
 import Contact_Us from "./pages/Contact_Us/ContactUs";
 import NoPage from "./pages/NoPage/Nopage";
 import User_Profile from "./pages/User_Profile/User_Profile";
 import ChangePassword from "./pages/ChangePassword/ChangePassword";
 import Recovery_Options from "./pages/RecoveryPhone/RecoveryPhone";
-import { UserProvider } from "./components/contexts/userContext"; // named import
+import {UserProvider} from "./components/contexts/userContext"; // named import
 
 function App() {
   return (
@@ -24,33 +22,20 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route index element={<Sign_in_Sign_up />} />
-            <Route path="/Signin_Signup" element={<Sign_in_Sign_up />} />
+            <Route path="/Signin_Signup" element={<Sign_in_Sign_up/>} />
             <Route path="/Home" element={<Home />} />
             <Route path="/Report_a_Crime" element={<Report_a_Crime />} />
             <Route path="/Pending_Cases" element={<Pending_Cases />} />
             <Route path="/Closed_Cases" element={<Closed_Cases />} />
-            <Route
-              path="/Ongoing_Investigations"
-              element={<Ongoing_Investigations />}
-            />
+            <Route path="/Ongoing_Investigations" element={<Ongoing_Investigations />} />
             <Route path="/Local_Felonies" element={<Local_Felonies />} />
             <Route path="/Teams" element={<Teams />} />
             <Route path="/Settings" element={<Settings />} />
             <Route path="/Contact_Us" element={<Contact_Us />} />
-            <Route
-              path="/User_ProfileView"
-              element={<User_ProfileView />}
-            />{" "}
-            <Route
-              path="/Criminal_ProfileView"
-              element={<Criminal_ProfileView />}
-            />{" "}
             <Route path="/User_Profile" element={<User_Profile />} />
-            <Route
-              path="/Recovery_Options"
-              element={<Recovery_Options />}
-            ></Route>
-            <Route path="/Change_Password" element={<ChangePassword />}></Route>
+            <Route path="/Recovery_Options" element={<Recovery_Options/>}></Route>
+            <Route path="/Change_Password" element={<ChangePassword/>}></Route>
+
             <Route path="*" element={<NoPage />} />
           </Routes>
         </BrowserRouter>
@@ -61,9 +46,10 @@ function App() {
 
 export default App;
 
+
 /*
-            in order to make multiple pages in react we use the npm react-router-dom package, which routes urls to their respective
-            components. No need to create separate pages as react is built for the purpose of creating single pages, not multiple.
-            to use this functionality, we muslt enclose our elements in both the router BrowserRouter and Router tags.
-            How it routes traffic? -> to check later .
-            */
+in order to make multiple pages in react we use the npm react-router-dom package, which routes urls to their respective
+components. No need to create separate pages as react is built for the purpose of creating single pages, not multiple.
+to use this functionality, we muslt enclose our elements in both the router BrowserRouter and Router tags.
+How it routes traffic? -> to check later .
+*/
