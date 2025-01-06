@@ -21,6 +21,12 @@ router.get('/currentUser', async (req, res) => {
     }
 });
 
+// //check if logged in
+// router.get('/checkSession', (req, res) => {
+//     const authenticated = req.session.authenticated;
+//     return res.status(200).json({ authenticated });
+// });
+
 // Add Login Route (POST)
 router.post('/login', checkAdmin, async (req, res) => {
 

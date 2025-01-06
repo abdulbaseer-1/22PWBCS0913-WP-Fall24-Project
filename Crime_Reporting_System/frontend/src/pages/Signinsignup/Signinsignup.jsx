@@ -48,14 +48,10 @@ const Signinsignup = () => {
                 withCredentials:true,
             });
             if (response.status === 200) {
-                // Successfully logged in
-                console.log(response.data.message); // Show login success message
                 
-                console.log("checking role now");
                 // Navigate based on user role (admin or user)
                 const role = response.data.user.role; // its .user.role not just .role b/c respone can send multiple objects, and the user object sent here has the role
                 console.log("role : " + role);
-                console.log("role : ", role);
                 
                 // Store the role in localStorage
                 localStorage.setItem('role', role);  // Save role to localStorage
