@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 #environment conigurations and api keys
-.env
+#.env # this is for dev team

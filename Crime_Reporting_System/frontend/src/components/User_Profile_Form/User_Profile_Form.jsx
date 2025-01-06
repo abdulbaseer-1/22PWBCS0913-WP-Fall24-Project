@@ -3,9 +3,11 @@ import React, { useState } from 'react';
 import useUser from '../contexts/userContext';
 import axios from 'axios';
 import MyButton from '../justabutton/Button';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function User_Profile_Form() {
+  const navigate = useNavigate();
+
   const [Name, setName] = useState('');
   const [fathersName, setFathersName] = useState('');
   const [cnic, setCnic] = useState('');
@@ -55,8 +57,8 @@ function User_Profile_Form() {
     }
   };
 
-  const viewProfile = (CNIC) => { // it takes the CNIC of the current user and uses it to display the user info
-    Navigate("\User_Profile_View");
+  const viewProfile = () => { 
+    navigate("/User_ProfileView");
   };
 
   return (
