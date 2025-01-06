@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import useUser from '../contexts/userContext';
 import axios from 'axios';
 import MyButton from '../justabutton/Button';
-import { useNavigate } from 'react-router-dom'; // Correctly import useNavigate
+import { Navigate } from 'react-router-dom';
 
 function User_Profile_Form() {
   const [Name, setName] = useState('');
@@ -14,7 +14,6 @@ function User_Profile_Form() {
   const [cnicPicture, setCnicPicture] = useState(null);
   const [userPicture, setUserPicture] = useState(null);
   const { signupDetails } = useUser();
-  const navigate = useNavigate(); // Initialize navigate properly
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -56,9 +55,8 @@ function User_Profile_Form() {
     }
   };
 
-  // Ensure viewProfile is a function
-  const viewProfile = () => {
-    navigate('/User_Profileview'); // Correct path for navigation
+  const viewProfile = (CNIC) => { // it takes the CNIC of the current user and uses it to display the user info
+    Navigate("\User_Profile_View");
   };
 
   return (
@@ -66,7 +64,7 @@ function User_Profile_Form() {
       <div className={styles.content_area}>
         <div className={styles.crimeReportContainer}>
           <h2>User Profile</h2>
-          <MyButton onClick={viewProfile}>View Profile</MyButton> {/* Correctly pass function reference */}
+          <MyButton onClick={viewProfile}>view profile</MyButton>
           <form onSubmit={handleSubmit}>
             <div className={styles.formGroup}>
               <label>Your Name:</label>
