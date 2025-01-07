@@ -5,8 +5,6 @@ import Report_a_Crime from "./pages/Report_a_Crime/Report_a_Crime";
 import Pending_Cases from "./pages/Pending_Cases/Pending_Cases";
 import Closed_Cases from "./pages/Closed_Cases/Closed_Cases";
 import Ongoing_Investigations from "./pages/Ongoing_Investigations/Ongoing_Investigations";
-import Local_Felonies from "./pages/Local_Felonies/Local_Felonies";
-import Teams from "./pages/Teams/Teams";
 import Settings from "./pages/Settings/Settings";
 import User_ProfileView from "./pages/User_Profileview/User_Profileview"; // Updated import for User_ProfileView
 import Report_View from "./pages/Report_View/Report_View"; // Importing Criminal_ProfileView
@@ -30,8 +28,6 @@ function App() {
             <Route path="/Pending_Cases" element={<Pending_Cases />} />
             <Route path="/Closed_Cases" element={<Closed_Cases />} />
             <Route path="/Ongoing_Investigations" element={<Ongoing_Investigations />} />
-            <Route path="/Local_Felonies" element={<Local_Felonies />} />
-            <Route path="/Teams" element={<Teams />} />
             <Route path="/Settings" element={<Settings />} />
             <Route path="/Contact_Us" element={<Contact_Us />} />
             <Route

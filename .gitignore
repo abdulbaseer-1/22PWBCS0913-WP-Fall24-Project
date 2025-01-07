@@ -25,3 +25,4 @@ dist-ssr
 
 #environment conigurations and api keys
 #.env # this is for dev team
+database/uploads/*
