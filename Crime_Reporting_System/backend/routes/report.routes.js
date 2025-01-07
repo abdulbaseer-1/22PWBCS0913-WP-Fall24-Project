@@ -1,11 +1,21 @@
 import express from 'express';
 import reportCrimeController from '../controllers/reportCrimeController.js';
 import { upload } from '../middleware/reportMulter.js';
+import getCrimesTabular from '../controllers/getReportTabular.js';
 
 const reportRouter = express.Router();
 
 //get all crime reports api
 reportRouter.get('/', reportCrimeController.getCrimes);
+
+//get reports tabular
+reportRouter.get('/reportsTabular', async (req, res) => {
+    console.log("inside reports tabular");
+
+    await getCrimesTabular(req, res);
+
+    console.log("crime reports in route: ", res.json());
+});
 
 //create crime report api
 reportRouter.post('/', (req, res, next) => {

@@ -1,0 +1,120 @@
+.header{
+    width: 100%;
+    height: auto;
+
+    border-top: 0%;
+    border-bottom: 5px solid red;
+    background-color: rgb(246, 248, 240);
+
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr 1fr;
+    align-items: center;
+}
+.header .banner_image_logo{
+    position: relative;
+    left: 10px;
+    justify-self: center;
+    width: 60%;
+    height: auto;
+    border-radius: 50%;
+}
+/* .header .banner_image_trailing_dove {
+    width: 17vw;
+    height: auto;
+    opacity: 45%;
+    justify-self :center;
+    position: absolute;
+    left: 50%;
+    overflow: hidden;
+} */
+.header .banner_title{
+    justify-self :center;
+    font-family: "Roboto", sans-serif;
+    position: relative;
+    left: 15%;
+    font-size: 4vw;
+}
+
+
+.header .banner_image_notification_anchor{
+    display: inline-block;
+    position: relative;
+    left: 95%;
+    top: 10%;
+    text-align: right;
+    width: 25%;
+}
+.header .banner_image_notification{
+    width: 100%;
+}
+.header .banner_image_notification:hover{
+    transform: scale(1.1);
+}
+
+.header .banner_image_user_anchor{
+    display: inline-block;
+    position: relative;
+    left: 45%;
+    top: 10%;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    width: 30%;
+    height: auto;
+}
+.header .banner_image_user{
+    width: 110%;
+}
+.header img:hover {
+    transform: scale(1.1);
+    cursor :pointer;
+}
+
+@media screen and (max-width:1080px) { /*Note : put media queries at the end so they are not overwritten by other commands*/
+    .header .banner_title{
+        font-size: 4vw;
+    }
+    .header .banner_image_logo{
+        width: 65%;
+    }
+    .header .banner_image_notification{
+        width: 120%;
+    }
+    .header .banner_image_user{
+        width: 120%;
+    }
+}
+@media screen and (max-width:600px) {
+    .header .banner_title{
+        font-size: 5vw;
+    }
+    .header .banner_image_logo{
+        width: 90%;
+    }
+    .header .banner_image_notification{
+        width: 140%;
+    }
+    .header .banner_image_user{
+        width: 140%;
+    }
+}
+@media screen and (max-width:400px) {
+    .header .banner_title{
+        font-size: 6vw;
+    }
+    .header .banner_image_logo{
+        width: 100%;
+    }
+    .header .banner_image_notification_anchor{
+        left: 50%;
+    }
+    .header .banner_image_notification{
+        width: 170%;
+    }
+    .header .banner_image_user_anchor{
+        left: 20%;
+    }
+    .header .banner_image_user{
+        width: 180%;
+    }
+}

@@ -39,6 +39,10 @@ if (!PORT) {
 // Initialize express
 const app = express();
 
+//satic folder for my uploads
+app.use('/database/uploads', express.static(path.join(__dirname, '../database/uploads')));
+
+
 //middleware
 //allow requestd from following, to prevent CORS errors,  Allow all origins (for development, make sure to restrict this in production)
 //frontend origin

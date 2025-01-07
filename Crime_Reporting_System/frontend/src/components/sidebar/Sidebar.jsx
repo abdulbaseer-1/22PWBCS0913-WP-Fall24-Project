@@ -11,10 +11,8 @@ function Admin_Sidebar({ className }) {
             <a href="/Home">Home</a>
             <a href="/Report_a_Crime">Report Crime</a> 
             <a href="/Pending_Cases">Pending cases</a>
-            {role === "admin" && <a href="/Teams">Teams</a>}  {/* Show only for admin */}
             {role === "admin" && <a href="/Closed_Cases">Closed Cases</a>} {/* Show only for admin */}
             {role === "admin" && <a href="/Ongoing_Investigations">Ongoing Investigations</a>} {/* Show only for admin */}
-            <a href="/Local_Felonies">Local Felonies</a>
             <a href="/Settings">settings</a>
             <a href="/Contact_Us">Contact us</a>
         </div>
