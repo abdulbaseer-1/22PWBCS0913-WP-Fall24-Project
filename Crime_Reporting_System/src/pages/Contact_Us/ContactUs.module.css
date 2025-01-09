@@ -1,0 +1,84 @@
+.content_area {
+  display: grid;
+  grid-template-columns: auto 4fr;
+  row-gap: 0px;
+  column-gap: 0px;
+  overflow: hidden;
+  margin-right: 10px;
+  margin-left: 0px;
+  box-sizing: border-box;
+  padding-right: 10px;
+}
+
+.content_area .sidebar {
+  align-self: right;
+  box-sizing: border-box;
+}
+
+.content_area .contentBody {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: whitesmoke;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.content_area .contact_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  background-color: beige;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.content_area .contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: antiquewhite;
+  border-radius: 20px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.content_area .contact:hover {
+  transform: translateY(-5px); /* Slight lift effect */
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+}
+
+.content_area .contact > img {
+  width: 100px;
+  height: auto;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.content_area .contact > a > img {
+  width: 60px;
+  margin-top: 10px;
+}
+
+.content_area .contact > h5 {
+  min-width: 250px;
+  max-width: 250px;
+}
+
+.content_area .contact > p {
+  max-width: 250px;
+}
+
+.content_area .description {
+  width: 100%;
+  background-color: rgb(238, 253, 253);
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
