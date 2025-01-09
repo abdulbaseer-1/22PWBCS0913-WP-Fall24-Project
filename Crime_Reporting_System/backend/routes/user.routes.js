@@ -5,6 +5,7 @@ import login_logic from '../controllers/login_logic.js';
 import checkAdmin from '../middleware/userVsAdmin.js'; // Import the checkAdmin middleware
 import logout_logic from '../controllers/logout_logic.js';
 import getCurrentUser from '../controllers/getCurrentUser.js';
+import changePassword from '../controllers/Password_Change.js';
 
 const router = express.Router();
 
@@ -21,6 +22,14 @@ router.get('/currentUser', async (req, res) => {
     }
 });
 
+router.put('/change-password', async (req, res) => {
+    console.log("inside change password function");
+    try {
+        changePassword(req, res);
+    } catch (error) {
+        res.status(500).json({msg:"error password not changed", error:error});
+    }
+});
 // //check if logged in
 // router.get('/checkSession', (req, res) => {
 //     const authenticated = req.session.authenticated;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './user_profileview.module.css';
-import testImage from './Student-2.jpeg'; // You can use this default image
+import testImage from './Student-2.jpeg'; // Default image
 
 const UserProfile = () => {
   const [user, setUser] = useState(null); // Initially null, as we're fetching data
@@ -12,39 +12,42 @@ const UserProfile = () => {
       try {
         // Correct the URL to match the backend route
         const response = await axios.get('https://localhost:8080/api/users/currentUser', {
-          withCredentials:true,
+          withCredentials: true,
         });
         console.log("User data fetched from backend:", response.data);
         setUser(response.data);
       } catch (err) {
         setError('Error fetching user data');
-        console.error("Error fetching user data:", err);  
+        console.error("Error fetching user data:", err);
       }
     };
-  
+
     fetchUserData();
-  }, []);  // Empty array ensures this runs only once when the component mounts
-  
+  }, []); // Empty array ensures this runs only once when the component mounts
+
   if (error) {
-    return <div>{error}</div>;  
+    return <div>{error}</div>;
   }
 
   if (!user) {
-    return <div>Loading...</div>;  // Show loading state while the data is being fetched
+    return <div>Loading...</div>; // Show loading state while the data is being fetched
   }
 
   return (
     <div className={styles.container}>
       <h1 className={styles.heading}>User Profile</h1>
       <div className={styles.profile}>
-      <img 
-        src={user && user.userImage ? `https://localhost:8080/database/uploads/${user.userImage}` : testImage} 
-        alt="User" 
-        className={styles.image}
-      />
+        <img
+          src={user && user.userImage ? `https://localhost:8080/database/uploads/${user.userImage}` : testImage}
+          alt="User"
+          className={styles.image}
+        />
         <div className={styles.details}>
+          <p><strong>Username:</strong> {user.username}</p>
           <p><strong>Name:</strong> {user.name}</p>
           <p><strong>Email:</strong> {user.email}</p>
+          <p><strong>Father's Name:</strong> {user.fathers_name}</p>
+          <p><strong>CNIC:</strong> {user.CNIC}</p>
           <p><strong>Phone:</strong> {user.phone}</p>
           <p><strong>Address:</strong> {user.address}</p>
         </div>

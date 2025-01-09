@@ -52,6 +52,7 @@ function User_Profile_Form() {
         },
       });
       console.log(response.data);
+      alert("user created successfully!")
     } catch (error) {
       console.error('Error submitting form:', error);
     }
