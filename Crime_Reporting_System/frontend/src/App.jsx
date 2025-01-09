@@ -11,7 +11,7 @@ import Report_View from "./pages/Report_View/Report_View"; // Importing Criminal
 import Contact_Us from "./pages/Contact_Us/ContactUs";
 import NoPage from "./pages/NoPage/Nopage";
 import User_Profile from "./pages/User_Profile/User_Profile";
-import ChangePassword from "./pages/ChangePassword/ChangePassword";
+import ChangePassword from "./pages/Change_Password/Change_Password";
 import Recovery_Options from "./pages/RecoveryPhone/RecoveryPhone";
 import {UserProvider} from "./components/contexts/userContext"; // named import
 

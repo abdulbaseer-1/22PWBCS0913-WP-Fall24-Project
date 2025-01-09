@@ -2,7 +2,7 @@ import styles from './User_Profile_Form.module.css';
 import React, { useState } from 'react';
 import useUser from '../contexts/userContext';
 import axios from 'axios';
-import MyButton from '../justabutton/Button';
+import MyButton from '../justabutton/Button'; // Ensure this import is correct
 import { useNavigate } from 'react-router-dom';
 
 function User_Profile_Form() {
@@ -23,8 +23,8 @@ function User_Profile_Form() {
     const userData = new FormData();
     console.log(signupDetails);
 
-    if (!signupDetails) { 
-      console.error("signupDetails is not available");
+    if (!signupDetails) {
+      console.error('signupDetails is not available');
       return;
     }
 
@@ -57,8 +57,9 @@ function User_Profile_Form() {
     }
   };
 
-  const viewProfile = () => { 
-    navigate("/User_ProfileView");
+  // Define the viewProfile function correctly as a function
+  const viewProfile = () => {
+    navigate('/User_ProfileView');
   };
 
   return (
@@ -66,7 +67,9 @@ function User_Profile_Form() {
       <div className={styles.content_area}>
         <div className={styles.crimeReportContainer}>
           <h2>User Profile</h2>
-          <MyButton onClick={viewProfile}>view profile</MyButton>
+          {/* Correctly pass the viewProfile function as the onClick handler */}
+          <MyButton onClick={viewProfile}>View Profile</MyButton>
+
           <form onSubmit={handleSubmit}>
             <div className={styles.formGroup}>
               <label>Your Name:</label>
