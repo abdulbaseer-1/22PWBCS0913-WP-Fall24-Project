@@ -1,23 +1,45 @@
+/* Hero Section */
+.hero {
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    overflow: hidden;
+    padding: 0 4vw; /* Adds space on the sides of the image */
+    margin-top: 2vh; /* Adds space above the hero section */
+}
+
+/* Hero Image */
+.hero > img {
+    width: 75%;
+    height: auto;
+    object-fit: cover;
+    margin: 3% 0 0 12%;
+    align-items: center;
+}
+
+/* Positioning the message box above the hero images */
 .hero_message {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 3%;
+    position: relative;
     text-align: left;
     justify-content: center;
     background-color: rgba(255, 255, 255, 0.315);
     box-sizing: border-box;
-    border-radius: 15px;
+    border-radius: 20% 20% 0% 0%;
     box-shadow: 2px 5px 15px rgba(186, 166, 166, 0.274);
-    max-width: 40vw;
+    max-width: 60vw;
     padding: 15px;
     font-family: 'Arial', sans-serif;
     line-height: 30px;
-}
-.hero_message:hover {
- background-color: rgba(250, 235, 215, 0.769);
+    z-index: 5; /* Ensure the message box stays above other content */
+    margin: 3vh auto 0vh; /* Center the box and add margin below */
 }
 
+/* Hover effect for message box */
+.hero_message:hover {
+    background-color: rgba(250, 235, 215, 0.769);
+}
+
+/* Styling for message title and content */
 .hero_message .title {
     font-size: 2.3vw;
     font-weight: bold;
@@ -33,15 +55,18 @@
 .hero_message .consequences {
     font-size: 1.5vw;
 }
+
 .hero_message .warning {
     font-size: 1.5vw;
     font-style: italic;
     color: rgb(206, 0, 0);
 }
 
+/* Responsive Adjustments */
 @media screen and (max-width: 1080px) {
     .hero_message {
         max-width: 50vw;
+        padding: 12px;
     }
 
     .hero_message .title {
@@ -59,10 +84,11 @@
     .hero_message {
         max-width: 60vw;
         line-height: 20px;
+        padding: 10px;
     }
 
     .hero_message .title {
-        font-size: 3vw;
+        font-size: 3.2vw;
     }
 
     .hero_message .content,
@@ -74,6 +100,22 @@
 
 @media screen and (max-width: 500px) {
     .hero_message {
-        display: none;
+        display: block;
+        position: relative;
+        max-width: 90vw; /* Take more width on smaller screens */
+        padding: 10px;
+        top: auto;
+        left: auto;
+        margin: 5vh auto; /* Center the box with top margin */
+    }
+
+    .hero_message .title {
+        font-size: 4vw;
+    }
+
+    .hero_message .content,
+    .hero_message .warning,
+    .hero_message .consequences {
+        font-size: 2.5vw;
     }
 }

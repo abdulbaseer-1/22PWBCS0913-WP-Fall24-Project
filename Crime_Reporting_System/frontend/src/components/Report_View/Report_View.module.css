@@ -11,7 +11,7 @@
 
 .heading {
   text-align: center;
-  font-size: 28px;
+  font-size: 2rem; /* Changed to rem for better scalability */
   font-weight: bold;
   color: #333;
   margin-bottom: 20px;
@@ -21,6 +21,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center; /* Centering vertically as well */
 }
 
 .image {
@@ -30,6 +31,12 @@
   object-fit: cover;
   margin-bottom: 20px;
   border: 2px solid #ccc;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added smooth transition */
+}
+
+.image:hover {
+  transform: scale(1.1); /* Adds zoom effect on hover */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Light shadow on hover */
 }
 
 .details {
@@ -41,7 +48,7 @@
 }
 
 .details p {
-  font-size: 16px;
+  font-size: 1rem; /* Changed to rem for better scalability */
   color: #555;
   margin: 10px 0;
 }
@@ -57,11 +64,17 @@
   width: 200px;
   height: auto;
   border-radius: 0;
+  transition: transform 0.3s ease; /* Added transition for other images */
+}
+
+.image + .image:hover {
+  transform: scale(1.05); /* Zoom effect for additional images */
 }
 
 @media (min-width: 600px) {
   .profile {
     flex-direction: row;
+    align-items: center; /* Align items horizontally for larger screens */
   }
 
   .details {
@@ -71,5 +84,24 @@
 
   .image {
     margin-bottom: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 1.5rem; /* Smaller font size for smaller screens */
+  }
+
+  .image {
+    width: 120px; /* Adjust image size for smaller screens */
+    height: 120px;
+  }
+
+  .details {
+    padding: 15px; /* Smaller padding for smaller screens */
+  }
+
+  .image + .image {
+    width: 150px; /* Adjust second image size for smaller screens */
   }
 }

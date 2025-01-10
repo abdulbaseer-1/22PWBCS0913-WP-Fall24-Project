@@ -1,22 +1,18 @@
 import React, { useState } from 'react'; // Import React and the useState hook from React to handle state
-import table_style from "./Closed_Cases_Table.module.css"; // Using same names for css dosent create conflict in modules as modules are given unique names at build time
-import detailEye from "../../../assets/tables/eye icon.png";
+import table_style from "./Table.module.css";
 
-const Closed_Cases_Table = ({className}) => {
+const Table = ({className}) => {
   console.log("Table component loaded");
   // Define table columns in an array. These are the headers that will appear at the top of the table.
-  const columns = ['ID', 'Request_Type', 'Location', 'Date', 'Actions'];
+  const columns = ['ID', 'Title', 'Description', 'Date'];
 
   // Define the initial state for the data in the table. Use the useState hook to manage it.
   const [data, setData] = useState([
-    { id: 1032, Request_Type: 'Crime 1', Location: 'Description 1', date: '2023-09-09', Actions: detailEye},
-    { id: 2647, Request_Type: 'Crime 2', Location: 'Description 2', date: '2024-11-08', Actions: detailEye},
-    { id: 3939, Request_Type: 'Crime 3', Location: 'Description 3', date: '2024-02-07', Actions: detailEye},
-    { id: 4734, Request_Type: 'Crime 4', Location: 'Description 4', date: '2024-12-06', Actions: detailEye},
+    { id: 1, title: 'Crime 1', description: 'Description 1', date: '2024-12-09' },
+    { id: 2, title: 'Crime 2', description: 'Description 2', date: '2024-12-08' },
+    { id: 3 , title: 'Crime 3', description: 'Description 3', date: '2024-12-07' },
+    { id: 4, title: 'Crime 4', description: 'Description 4', date: '2024-12-06' },
   ]);
-
-  //details href to be generated from user clicked at backend.
-  const link = "/Closed_Cases";
 
   // JSX structure for rendering the table and its contents
   return (
@@ -37,12 +33,9 @@ const Closed_Cases_Table = ({className}) => {
           {data.map((row, index) => (
             <tr key={index}> {/* Each row has a unique key for React's reconciliation */}
               <td className={`${table_style.table_cell} ${className}`}>{row.id}</td> {/* Display the 'id' of each row in a table cell */}
-              <td className={`${table_style.table_cell} ${className}`}>{row.Request_Type}</td> {/* Display the 'title' of each row */}
-              <td className={`${table_style.table_cell} ${className}`}>{row.Location}</td> {/* Display the 'description' */}
+              <td className={`${table_style.table_cell} ${className}`}>{row.title}</td> {/* Display the 'title' of each row */}
+              <td className={`${table_style.table_cell} ${className}`}>{row.description}</td> {/* Display the 'description' */}
               <td className={`${table_style.table_cell} ${className}`}>{row.date}</td> {/* Display the 'date' of the crime */}
-              <td className={`${table_style.table_cell_centered} ${className}`}><a href={link}>
-                <img src={row.Actions} alt="Details Icon" ></img></a>
-              </td> {/*image inside row dtails so do accordingly, look this up in detail */}
             </tr>
           ))}
         </tbody>
@@ -51,7 +44,7 @@ const Closed_Cases_Table = ({className}) => {
   );
 };
 
-export default Closed_Cases_Table; 
+export default Table; 
 
 
 

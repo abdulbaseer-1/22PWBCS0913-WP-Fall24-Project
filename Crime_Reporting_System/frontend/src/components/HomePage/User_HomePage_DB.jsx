@@ -8,13 +8,13 @@ function User_HomePage_DB() {
       <div className={User_homePage_style.dashboard_container}>
 
         <div className={User_homePage_style.dashboard_components}>
-          Pending Cases
+          Pending Cases : 13
         </div>
         <div className={User_homePage_style.dashboard_components}>
-          Total Cases
+          Total Cases : 32
         </div>
         <div className={User_homePage_style.dashboard_components}>
-          Report Crime
+         Recent Report : 7
         </div>
         
       </div>

@@ -3,33 +3,44 @@
   width: 100%;
   box-sizing: border-box;
   overflow-y: fit-to-parent;
-}
- 
-.contentBody a {
-  display: inline-block;
-  margin: 10px 0;
-  color: #007bff;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.contentBody a:hover {
-  text-decoration: underline;
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
 }
 
-.contentBody button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #ff4b4b;
+.buttonContainer button {
+  margin: 4px 0;
+  padding: 32px 54px;
+  background-color: #00274d;
   color: white;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 20px;
+  font-size: 18px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.5s ease, transform 0.5s ease, opacity 0.2s ease;
+  width: 100%;}
+
+/* Align buttons inside container */
+.leftButton {
+  align-self: flex-start; /* Align to the left */
 }
 
-.contentBody button:hover {
-  background-color: #ff3333;
+.rightButton {
+  align-self: flex-end; /* Align to the right */
+}
+
+.buttonContainer button:hover {
+  opacity: 0.8; /* Slight opacity change on hover */
+  transform: scale(1.05); /* Slight scaling effect on hover */
+}
+
+.buttonContainer button:active {
+  transform: scale(0.98); /* Slight shrinking effect when button is pressed */
 }

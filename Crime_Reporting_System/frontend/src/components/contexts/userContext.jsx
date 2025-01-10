@@ -12,5 +12,5 @@ export const UserProvider = ({ children }) => { // check the double exports
   );
 };
 
-const useUser = () => useContext(UserContext); // make it a context
+const useUser = () => useContext(UserContext);
 export default useUser;

@@ -52,7 +52,6 @@ function User_Profile_Form() {
         },
       });
       console.log(response.data);
-      alert("user created successfully!")
     } catch (error) {
       console.error('Error submitting form:', error);
     }
@@ -89,7 +88,7 @@ function User_Profile_Form() {
                 id="cnic"
                 value={cnic}
                 onChange={(e) => setCnic(e.target.value.replace(/[^0-9]/g, ''))}
-                maxLength={13}
+                maxLength={14}
               />
             </div>
 
