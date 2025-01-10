@@ -82,6 +82,7 @@ function ReportACrime() {
                 type="text"
                 id="cnic"
                 value={cnic}
+                maxLength={13}
                 onChange={(e) => setCnic(e.target.value.replace(/[^0-9]/g, ''))}
               />
             </div>

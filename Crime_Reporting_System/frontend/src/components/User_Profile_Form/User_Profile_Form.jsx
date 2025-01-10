@@ -89,7 +89,7 @@ function User_Profile_Form() {
                 id="cnic"
                 value={cnic}
                 onChange={(e) => setCnic(e.target.value.replace(/[^0-9]/g, ''))}
-                maxLength={14}
+                maxLength={13}
               />
             </div>
 

@@ -88,6 +88,15 @@ router.post('/', (req, res, next) => {
 router.put('/:id', userController.updateUser);
 
 // Delete a user
-router.delete('/:id', userController.deleteUser);
+router.post('/deleteCurrent', (req, res) => {
+  console.log("inside the get current route");
+  console.log('Cookies received:', req.headers.cookie);
+  try {
+    userController.deleteUser(req, res);
+
+  } catch (error) {
+    console.error("Eroor user not deleted", error);
+  }
+});
 
 export default router;

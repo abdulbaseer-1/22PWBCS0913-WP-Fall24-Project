@@ -3,7 +3,7 @@ import Header from "../../components/Header/Header"
 import Footer from "../../components/Footer/Footer";
 import Hero from "../../components/Hero/Hero";
 import Content from "../../components/content/Content";
-import Report_View from '../../components/Report_View/Report_View';
+import Report_View from '../../components/CompletedReportsView/Completed_Report_View';
 
 function ReportView() {
   return(

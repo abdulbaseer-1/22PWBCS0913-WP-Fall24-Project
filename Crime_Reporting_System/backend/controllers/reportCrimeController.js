@@ -41,7 +41,7 @@ const getCompletedCrime = async (req, res) => {
 
         console.log("report id", id);
         
-        const crime = await CompletedReport.findOne({scanId:id});
+        const crime = await CompletedReport.findById(id);
 
         console.log("report : " ,crime);
 
@@ -109,8 +109,11 @@ const setComplete = async (req, res) => {
 
         console.log("report in complete : ", report);
 
+        const manualId = new ObjectId(); // Generate a new manual ObjectId
+
+// scanId: id,
         const crime = await CompletedReport.create({
-            scanId: id,
+            _id: manualId,
             reporterName: report.reporterName,
             reporter_father_name: report.reporter_father_name,
             reporterCNIC: report.reporterCNIC,

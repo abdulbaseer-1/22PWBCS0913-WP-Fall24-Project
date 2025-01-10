@@ -1,11 +1,10 @@
 import mongoose from 'mongoose';
-
+// scanId: {
+    //   type: String,
+    //   required: [true, 'Please enter your scanId'],
+    // },
 const CompletedReportSchema = new mongoose.Schema(
   {
-    scanId: {
-      type: String,
-      required: [true, 'Please enter your scanId'],
-    },
     reporterName: {
       type: String,
       required: [true, 'Please enter your name'],

@@ -77,13 +77,32 @@ const updateUser = async (req, res) => {
 };
 
 const deleteUser = async (req, res) => {
-    try{
-        const id = req.params.id; 
-        await User.findByIdAndDelete(id);
+    try {
+        if (!req.session || !req.session.user) {
+            return res.status(401).json({ message: 'No authenticated user found' });
+        }
 
-        res.status(200).json(`User deleted at id : ${id}`);
-    }catch (error) {
-        res.status(500).json({message: error.message}); // check out express demo to find out more about error.msg
+        const username = req.session.user.username;
+        const user = await User.findOne({ username: username });
+        
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        await User.findByIdAndDelete(user._id);
+        
+        // clear session after del
+        req.session.destroy((err) => {
+            if (err) {
+                console.error('Session destruction error:', err);
+                return res.status(500).json({ message: 'Error clearing session' });
+            }
+            res.clearCookie('sessionId');
+            return res.status(200).json({ message: 'User deleted successfully' });
+        });
+    } catch (error) {
+        console.error('Delete user error:', error);
+        res.status(500).json({ message: error.message });
     }
 };
 

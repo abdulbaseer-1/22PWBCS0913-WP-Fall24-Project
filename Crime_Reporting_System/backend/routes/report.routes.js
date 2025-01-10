@@ -42,7 +42,11 @@ reportRouter.post('/', (req, res, next) => {
 //set the crime as completed
 reportRouter.post('/setComplete', reportCrimeController.setComplete);
 //get one crime report api
-reportRouter.get('/getCompletedReport/:id', reportCrimeController.getCompletedCrime);
+reportRouter.get('/getCompletedReport/:id', (req, res) => {
+    console.log("inside get completed comp");
+
+    reportCrimeController.getCompletedCrime(req, res);
+});
 
 reportRouter.get('/getReport/:id', reportCrimeController.getCrime);
 

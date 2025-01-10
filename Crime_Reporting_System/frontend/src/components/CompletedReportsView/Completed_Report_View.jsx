@@ -12,7 +12,7 @@ const CriminalProfile = () => {
     const fetchReportData = async () => {
       try {
         console.log("id here :", ID.id);
-        const response = await axios.post(`https://localhost:8080/api/reports/getCompletedReport/${ID.id}`);
+        const response = await axios.get(`https://localhost:8080/api/reports/getCompletedReport/${ID.id}`);
         console.log('Report data fetched from backend:', response.data);
         setReport(response.data); 
       } catch (err) {

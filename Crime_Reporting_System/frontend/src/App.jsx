@@ -14,8 +14,10 @@ import NoPage from "./pages/NoPage/Nopage";
 import User_Profile from "./pages/User_Profile/User_Profile";
 import ChangePassword from "./pages/Change_Password/Change_Password";
 import Recovery_Options from "./pages/RecoveryPhone/RecoveryPhone";
+import Create_Admin from "./pages/Create_Admin/Create_Admin";
 import {UserProvider} from "./components/contexts/userContext"; // named import
 import { IdProvider } from "./components/contexts/idContext";
+
 
 function App() {
   return (
@@ -39,6 +41,7 @@ function App() {
               <Route path="/User_Profile" element={<User_Profile />} />
               <Route path="/Recovery_Options" element={<Recovery_Options/>}/>
               <Route path="/Change_Password" element={<ChangePassword/>}/>
+              <Route path="/Create_Admin" element={<Create_Admin/>}/>
 
               <Route path="*" element={<NoPage />} />
             </Routes>
