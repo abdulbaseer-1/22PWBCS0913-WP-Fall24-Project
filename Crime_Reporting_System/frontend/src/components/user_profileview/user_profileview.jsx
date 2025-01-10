@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './user_profileview.module.css';
-import testImage from './Student-2.jpeg'; // Default image
 
 const UserProfile = () => {
   const [user, setUser] = useState(null); // Initially null, as we're fetching data

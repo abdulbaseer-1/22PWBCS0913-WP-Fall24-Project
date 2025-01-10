@@ -1,11 +1,14 @@
 .footer {
-    border-top: 20px solid black; 
+    border-top: 2px solid white; 
     width: 100%;
     height: auto;
     margin: 0 auto;
     text-align: center;
-    background-color: darkgray;
+    background-color: #00274d;
     margin-top: 5px;
+}
+.footer p{
+    color: white;
 }
 .footer .to_center{
     align-content: center;
@@ -26,15 +29,18 @@
     "s c";
 }
 .footer .contact_grid > div{
-    padding: 2%;
+    /* padding: 2%; */
 }
 .footer .website_summary {
     grid-area: s;
+    color: white;
+    font-size: large;
 }
 
 .footer .contact_1 {
     grid-area: a;
 }
+
 
 .footer .contact_2 {
     grid-area: b;

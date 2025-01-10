@@ -4,6 +4,7 @@
     display: inline-block;
     width: 50px;
     height: 25px;
+    margin-top: 2%;
   }
   
   /* Hide the checkbox */
@@ -22,7 +23,7 @@
     right: 0;
     bottom: 0;
     background-color: #ccc;
-    transition: 0.4s;
+    transition: 1.5s;
     border-radius: 25px;
   }
   
@@ -34,13 +35,13 @@
     left: 3px;
     bottom: 2.5px;
     background-color: white;
-    transition: 0.4s;
+    transition: .8s;
     border-radius: 100%;
   }
   
   /* Checked state */
   .switch input:checked + .slider {
-    background-color: #2196F3;
+    background-color: #00274d;
   }
   
   .switch input:checked + .slider:before {

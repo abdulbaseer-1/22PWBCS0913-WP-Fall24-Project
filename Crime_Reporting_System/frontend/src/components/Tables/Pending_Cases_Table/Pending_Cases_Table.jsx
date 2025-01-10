@@ -13,6 +13,7 @@ const Pending_Cases_Table = ({ className }) => {
   const [error, setError] = useState(null);
   const{setID} = useID(); //custom context hook
   const navigate = useNavigate();
+  const role = localStorage.getItem('role');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -103,12 +104,16 @@ const Pending_Cases_Table = ({ className }) => {
               >
                 <img src={detailEye} alt="View Details" className={table_style.action_icon} />
               </button>
+              {(role === 'admin') && (
+            <>
               <button 
                 onClick={() => handleDelete(row._id)}
                 className={table_style.action_button}
               >
                 <img src={dustbin} alt="Delete" className={table_style.action_icon} />
               </button>
+            </>
+          )}
             </td>
           </tr>
         ))}

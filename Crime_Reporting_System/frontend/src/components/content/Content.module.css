@@ -8,6 +8,8 @@
     margin-left: 0px;
     box-sizing: border-box;
     padding-right: 10px;
+    background-color: #740712;
+    border-radius: 4%;
   }
 
 .noSidebar {

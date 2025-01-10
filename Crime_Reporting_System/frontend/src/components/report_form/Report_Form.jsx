@@ -92,6 +92,7 @@ function ReportACrime() {
                 type="text"
                 id="phone"
                 value={phone}
+                maxLength={11}
                 onChange={(e) => setPhone(e.target.value)}
               />
             </div>

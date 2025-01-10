@@ -1,114 +1,122 @@
-/* Styling for the entire table container */
+/* Table Container */
 .table_container {
+  margin: 7%;
   padding: 10px;
   max-width: 100%;
   max-height: 600px;
-  overflow: auto; /* Changed from visible to auto for better scrolling behavior */
+  overflow: visible;
 }
 
-/* Styling for the table itself */
-.table_container .crime_reports_table {
+/* Main Table Styling */
+.crime_reports_table {
   width: 100%;
   border-collapse: collapse;
   font-family: Arial, sans-serif;
   margin-top: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border: 1px solid #ddd;
-  border-spacing: 0;
+  border: 1px solid black;
+  border-radius: 4%;
+  color: #ddd;
+  background-color: #00274d;
+  border-spacing: 2px;
 }
 
-/* Styling for the table header cells */
-.table_container .table_header {
-  background-color: #f2f2f2;
+/* Table Headers */
+.table_header {
+  color: #ddd;
+  background-color: #00274d;
   padding: 12px 15px;
   text-align: left;
   font-weight: bold;
-  color: #333;
   border: 1px solid #ddd;
   text-transform: uppercase;
 }
 
-/* Styling for individual table cells */
-.table_container .table_cell {
+/* Table Cells */
+.table_cell {
+  color: #ddd;
+  background-color: #00274d;
   padding: 12px 15px;
   text-align: left;
   border: 1px solid #ddd;
-  white-space: nowrap; /* Prevents text wrapping */
+  text-wrap: nowrap;
 }
 
-.table_container .table_cell_centered {
+/* Centered Table Cells */
+.table_cell_centered {
+  background-color: #00274d;
   padding: 12px 15px;
   text-align: center;
   border: 1px solid #ddd;
-  white-space: nowrap;
+  text-wrap: nowrap;
 }
 
-/* Action buttons (View Details and Delete) */
-.table_container .action_button {
-  width: fit-content;
-  height: fit-content;
+/* Action Icons */
+.action_icon {
+  width: 30px;
+  height: auto;
+  border-radius: 8px;
+  background-color: white;
+  margin-left: 3px;
+  margin-right: 3px;
+  transition: transform 1s;
+}
+
+.action_icon:hover {
+  transform: scale(0.8);
+}
+
+/* Action Button */
+.action_button {
+  background: none;
   border: none;
-  background-color: rgba(0, 0, 0, 0);
-}
-.table_container .action_button img {
-  width: 24px;
-  height: 24px;
-  border-radius: 6px;
-  background-color: rgba(0, 0, 0, 0.05);
-  margin: 0 4px;
-  padding: 3px;
-  padding-left: 10px;
-  transition: transform 0.2s ease;
+  cursor: pointer;
+  padding: 0;
 }
 
-.table_container .action_button img:hover {
-  transform: scale(1.1);
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-/* Alternating row colors for readability */
-.table_container .crime_reports_table tr:nth-child(even) {
+/* Alternating Row Colors */
+.table_row:nth-child(even) {
   background-color: #f9f9f9;
 }
 
-.table_container .crime_reports_table tr:nth-child(odd) {
+.table_row:nth-child(odd) {
   background-color: #ffffff;
 }
 
-/* Hover effect for rows */
-.table_container .crime_reports_table tr:hover {
+/* Row Hover Effect */
+.table_row:hover {
   background-color: #f1f1f1;
   cursor: pointer;
 }
 
-/* Loading and error states */
+/* Loading State */
 .loading_container {
-  text-align: center;
-  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
 }
 
+.loading_spinner {
+  color: #00274d;
+  font-size: 1.2em;
+}
+
+/* Error State */
 .error_container {
-  color: #dc2626;
-  text-align: center;
+  color: red;
   padding: 20px;
-  background-color: #fee2e2;
-  border-radius: 4px;
-  margin: 10px 0;
+  text-align: center;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .table_container .crime_reports_table {
+  .crime_reports_table {
     font-size: 14px;
   }
 
-  .table_container .table_header,
+  .table_header,
   .table_cell {
     padding: 8px 10px;
-  }
-
-  .table_container .action_button img {
-    width: 20px;
-    height: 20px;
   }
 }
