@@ -1,22 +1,21 @@
 import User from "../models/User.model.js";
 import bcrypt from "bcrypt";
 
-export const changePassword = async (req, res) => {
+const changePassword = async (req, res) => {
   try {
     const { previousPassword, newPassword, confirmPassword } = req.body;
-
     if (newPassword !== confirmPassword) {
       return res.status(400).json({ message: "New password and confirm password do not match" });
     }
 
     // Fetch the authenticated user's ID from the session
-    const userId = req.session.user?._id; // Ensure user is authenticated via session
+    const userName = req.session.user?.username; // Ensure user is authenticated via session
 
-    if (!userId) {
+    if (!userName) {
       return res.status(400).json({ message: "User not authenticated" });
     }
 
-    const user = await User.findById(userId);
+    const user = await User.findOne({username: userName});
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -38,3 +37,5 @@ export const changePassword = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+export default changePassword;

@@ -4,9 +4,11 @@ import Hero from "../../components/Hero/Hero";
 import Content from "../../components/content/Content";
 import Footer from "../../components/Footer/Footer";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Settings() {
-
+  const navigate = useNavigate();
+  const role = localStorage.getItem('role');
   const logout = async () => {
     try {
         const response = await axios.post('https://localhost:8080/api/users/logout', {}, {
@@ -30,11 +32,32 @@ function Settings() {
         window.location.href = "/Signin_Signup";
     } catch (error) {
         console.error("Logout error:", error);
-        // You might want to show an error message to the user
         alert("Logout failed. Please try again.");
     }
   };
+  
+    const deleteAccount = async () => {
+      try {
+        // console.log("id from session : ", req.session.user.id); // cant do it here cus its a server side comp
+          const response = await axios.post('https://localhost:8080/api/users/deletecurrent', {} ,{ //You're passing the config options as the request body//incorrect
+              withCredentials: true,
+              headers: {
+                  'Content-Type': 'application/json'
+              }
+          });
+          if(!response){
+            return console.log("not deleted :)");
+          }
+          console.log("deleted :(");
+          navigate('/');
+        } catch (error) {
+            console.error("Logout error:", error);
+        }
+      };
 
+    const MakeAdmin = async () => {
+      navigate('/Create_Admin');
+      };
 
   return(
     <>
@@ -45,7 +68,14 @@ function Settings() {
           <a href="/Change_Password">Change Password</a><br />
           <a href="/User_Profile">Edit Profile</a><br />
           <a href="/Recovery_Options">Set Recovery options</a><br />
-          <button onClick={logout}>logout</button>
+          <button onClick={logout}>logout</button><br />
+          <button onClick={deleteAccount}>delete Account</button><br />
+          {(role === 'admin') && (
+            <>
+              <button onClick={MakeAdmin}>Add New Admin Account</button>
+              <br />
+            </>
+          )}
         </div>
       </Content>
       <Footer/>

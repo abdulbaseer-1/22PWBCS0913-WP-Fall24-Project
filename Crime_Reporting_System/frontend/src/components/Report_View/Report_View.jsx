@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './Report_View.module.css';
-import CriminalImage from './Student-1.jpeg'; // Default image
+import useID from '../contexts/idContext';
 
 const CriminalProfile = () => {
   const [report, setReport] = useState(null); // State for the report data
   const [error, setError] = useState(null); // State for handling errors
+  const {ID} = useID();
 
   useEffect(() => {
     const fetchReportData = async () => {
       try {
-        // Fetch data from the backend API
-        const response = await axios.get('https://localhost:8080/api/crimereports/currentReport', {
-          withCredentials: true,
-        });
+        console.log("id here :", ID.id);
+        const response = await axios.get(`https://localhost:8080/api/reports/getReport/${ID.id}`);
         console.log('Report data fetched from backend:', response.data);
-        setReport(response.data); // Update state with the fetched data
+        setReport(response.data); 
       } catch (err) {
         setError('Error fetching report data');
         console.error('Error fetching report data:', err);

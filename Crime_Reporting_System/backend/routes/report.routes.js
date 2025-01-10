@@ -12,9 +12,18 @@ reportRouter.get('/', reportCrimeController.getCrimes);
 reportRouter.get('/reportsTabular', async (req, res) => {
     console.log("inside reports tabular");
 
-    await getCrimesTabular(req, res);
+    await getCrimesTabular.getCrimesTabular(req, res);
+});
 
-    console.log("crime reports in route: ", res.json());
+//get all Completed crime reports api
+reportRouter.get('/getCompletedReportsTabular', async (req, res) => {
+    try {
+        console.log("inside completed reports tabular");
+        await getCrimesTabular.getCompletedReportsTabular(req, res);
+    } catch (error) {
+        console.error("Error in getCompletedReportsTabular route:", error);
+        res.status(500).json({ message: "Internal server error" });
+    }
 });
 
 //create crime report api
@@ -30,10 +39,18 @@ reportRouter.post('/', (req, res, next) => {
     });
 }, reportCrimeController.createCrime);
 
+//set the crime as completed
+reportRouter.post('/setComplete', reportCrimeController.setComplete);
 //get one crime report api
-reportRouter.get('/:id', reportCrimeController.getCrime);
+reportRouter.get('/getCompletedReport/:id', (req, res) => {
+    console.log("inside get completed comp");
+
+    reportCrimeController.getCompletedCrime(req, res);
+});
+
+reportRouter.get('/getReport/:id', reportCrimeController.getCrime);
 
 //delete a crime report
-reportRouter.delete('/:id', reportCrimeController.deleteCrime);
+reportRouter.delete('/deleteReport/:id', reportCrimeController.deleteCrime);
 
 export default reportRouter;

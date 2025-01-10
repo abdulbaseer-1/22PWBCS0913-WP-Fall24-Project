@@ -5,7 +5,7 @@ import login_logic from '../controllers/login_logic.js';
 import checkAdmin from '../middleware/userVsAdmin.js'; // Import the checkAdmin middleware
 import logout_logic from '../controllers/logout_logic.js';
 import getCurrentUser from '../controllers/getCurrentUser.js';
-import { changePassword } from '../controllers/Password_Change.js'; // Import changePassword function
+import changePassword from '../controllers/Password_Change.js';
 
 const router = express.Router();
 
@@ -20,6 +20,20 @@ router.get('/currentUser', async (req, res) => {
     console.error("Error in getCurrentUser route:", error);
   }
 });
+
+router.put('/change-password', async (req, res) => {
+    console.log("inside change password function");
+    try {
+        changePassword(req, res);
+    } catch (error) {
+        res.status(500).json({msg:"error password not changed", error:error});
+    }
+});
+// //check if logged in
+// router.get('/checkSession', (req, res) => {
+//     const authenticated = req.session.authenticated;
+//     return res.status(200).json({ authenticated });
+// });
 
 // Add Login Route (POST)
 router.post('/login', checkAdmin, async (req, res) => {
@@ -74,6 +88,15 @@ router.post('/', (req, res, next) => {
 router.put('/:id', userController.updateUser);
 
 // Delete a user
-router.delete('/:id', userController.deleteUser);
+router.post('/deleteCurrent', (req, res) => {
+  console.log("inside the get current route");
+  console.log('Cookies received:', req.headers.cookie);
+  try {
+    userController.deleteUser(req, res);
+
+  } catch (error) {
+    console.error("Eroor user not deleted", error);
+  }
+});
 
 export default router;

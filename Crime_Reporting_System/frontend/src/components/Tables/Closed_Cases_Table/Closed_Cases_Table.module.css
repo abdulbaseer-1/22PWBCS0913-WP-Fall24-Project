@@ -1,21 +1,20 @@
 /* Styling for the entire table container */
 .table_container {
-  /* margin: 20px; */
   padding: 10px;
   max-width: 100%;
   max-height: 600px;
-  overflow: visible;
+  overflow: auto; /* Changed from visible to auto for better scrolling behavior */
 }
 
 /* Styling for the table itself */
 .table_container .crime_reports_table {
   width: 100%;
-  border-collapse: collapse; /* Ensures no double borders between cells */
+  border-collapse: collapse;
   font-family: Arial, sans-serif;
   margin-top: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border: 1px solid black;
-  border-spacing: 2px; /* Adds space between the cells (only applicable when border-collapse is set to 'separate') */
+  border: 1px solid #ddd;
+  border-spacing: 0;
 }
 
 /* Styling for the table header cells */
@@ -25,42 +24,55 @@
   text-align: left;
   font-weight: bold;
   color: #333;
-  border: 1px solid #ddd; /* Adds borders to header cells */
-  text-transform: uppercase; /* Converts header text to uppercase */
+  border: 1px solid #ddd;
+  text-transform: uppercase;
 }
 
 /* Styling for individual table cells */
 .table_container .table_cell {
   padding: 12px 15px;
   text-align: left;
-  border: 1px solid #ddd; /* Adds borders to table cells */
-  text-wrap: nowrap;
+  border: 1px solid #ddd;
+  white-space: nowrap; /* Prevents text wrapping */
 }
+
 .table_container .table_cell_centered {
   padding: 12px 15px;
   text-align: center;
-  border: 1px solid #ddd; /* Adds borders to table cells */
-  text-wrap: nowrap;
+  border: 1px solid #ddd;
+  white-space: nowrap;
 }
-.table_container .table_cell > a > img,
-.table_container .table_cell_centered > a > img{
-  width: 30px;
-  height: auto;
-  border-radius: 9px ;
-  background-color: rgba(0, 0, 0, 0.1);
+
+/* Action buttons (View Details and Delete) */
+.table_container .action_button {
+  width: fit-content;
+  height: fit-content;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
 }
-.table_container .table_cell > a > img:hover,
-.table_container .table_cell_centered > a > img:hover{
+.table_container .action_button img {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background-color: rgba(0, 0, 0, 0.05);
+  margin: 0 4px;
+  padding: 3px;
+  padding-left: 10px;
+  transition: transform 0.2s ease;
+}
+
+.table_container .action_button img:hover {
   transform: scale(1.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* Alternating row colors for readability */
 .table_container .crime_reports_table tr:nth-child(even) {
-  background-color: #f9f9f9; /* Light gray background for even rows */
+  background-color: #f9f9f9;
 }
 
 .table_container .crime_reports_table tr:nth-child(odd) {
-  background-color: #ffffff; /* White background for odd rows */
+  background-color: #ffffff;
 }
 
 /* Hover effect for rows */
@@ -69,7 +81,22 @@
   cursor: pointer;
 }
 
-/* Responsive Design: Make the table look better on smaller screens */
+/* Loading and error states */
+.loading_container {
+  text-align: center;
+  padding: 20px;
+}
+
+.error_container {
+  color: #dc2626;
+  text-align: center;
+  padding: 20px;
+  background-color: #fee2e2;
+  border-radius: 4px;
+  margin: 10px 0;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
   .table_container .crime_reports_table {
     font-size: 14px;
@@ -78,5 +105,10 @@
   .table_container .table_header,
   .table_cell {
     padding: 8px 10px;
+  }
+
+  .table_container .action_button img {
+    width: 20px;
+    height: 20px;
   }
 }

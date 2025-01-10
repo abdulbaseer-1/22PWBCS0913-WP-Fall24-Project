@@ -5,47 +5,38 @@ const CrimeReportSchema = new mongoose.Schema(
     reporterName: {
       type: String,
       required: [true, 'Please enter your name'],
-      unique: false,
     },
     reporter_father_name: {
       type: String, // Corrected from `email` to `String`
       required: [true, 'Please enter your fathers name'],
-      unique: false,
     },
     reporterCNIC: {
       type: String, // Corrected from `password` to `String`
       required: [true, 'Please enter your CNIC'],
-      unique: true,
     },
     reporter_Phone: {
       type: String,
       required: [true, 'Please enter your phone numer'],
-      unique: true,
     },
     crime_type: {
       type: String,
       required: [true, 'Please enter the crime type'],
-      unique: false,
     },
     crime_date: {
       type: Date,
       required: [true, 'Please enter your crime date'],
-      unique: false,
     },
     crime_location: {
       type: String, // Corrected from `phone` to `String`
       required: [true, 'Please enter your crime location'],
-      unique: false,
     },
     suspect_description: {
       type: String,
       required: [true, 'Please describe your suspect'],
-      unique: false,
     },
     crime_description: {
       type: String,
       required: [true, 'Please describe your crime'],
-      unique: false,
     },
     CNIC_Front_Image: {
       type: String, // Assuming a file path or URL will be stored

@@ -15,6 +15,7 @@ import { dirname, resolve } from 'path';
 import logger from './controllers/logger.js';
 import userRoutes from './routes/user.routes.js';
 import reportRoutes from './routes/report.routes.js';
+import adminRoutes from './routes/admin.routes.js';
 import cors from 'cors'; // cors library, look it up
 import sessionMiddleware from './middleware/Session.js';
 import https from 'https';
@@ -67,12 +68,12 @@ app.use(logger); // not inbuilt
 //APIs
 app.use('/api/users', userRoutes);
 app.use('/api/reports', reportRoutes); // will rename but jugar here, both are api, so which to enter, just enter the first
-
+app.use('/api/admins', adminRoutes);
 
 
 
 // connect to DB and Start the server
-mongoose.connect('mongodb://localhost:27017/')
+mongoose.connect('mongodb+srv://abdulbaseers130:FMXC7lNF92zXK2ij@semesterproject.vdpil.mongodb.net/?retryWrites=true&w=majority&appName=SemesterProject')
     .then(() => {
         console.log('Connected to MongoDB');
         //converting to https server
